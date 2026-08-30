@@ -70,6 +70,17 @@ const icons = {
   "building-w": [fa.FaBuilding, WHITE],
   "lock-w": [fa.FaLock, WHITE],
   "boxes-w": [fa.FaBoxes, WHITE],
+  // category-03 deep-dive additions
+  "pin-w": [fa.FaMapMarkerAlt, WHITE],
+  "zoomin-w": [fa.FaSearchPlus, WHITE],
+  "cube-w": [fa.FaCube, WHITE],
+  "film-w": [fa.FaFilm, WHITE],
+  "play-w": [fa.FaPlayCircle, WHITE],
+  "warn-w": [fa.FaExclamationTriangle, WHITE],
+  "medal-w": [fa.FaMedal, WHITE],
+  "ruler-w": [fa.FaRulerCombined, WHITE],
+  "clipcheck-w": [fa.FaClipboardCheck, WHITE],
+  "tv-w": [fa.FaTv, WHITE],
   // colored versions (on light backgrounds)
   "lightbulb-navy": [fa.FaLightbulb, NAVY],
   "lightbulb-gray": [fa.FaLightbulb, GRAY],
