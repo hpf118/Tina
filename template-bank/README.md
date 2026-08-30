@@ -4,6 +4,7 @@ A PowerPoint template bank for **corporate instructional training** (adult learn
 
 - **`Training-Slide-Template-Bank.pptx`** — the overview bank: 18 slides, 12 reusable layouts across all three knowledge-type categories.
 - **`Category-01-Logical-Structural-Bank.pptx`** — the Category 01 deep dive: 21 slides, 15 logical/structural layouts in 3 families (see below). Includes speaker notes with facilitation tips.
+- **`Category-02-Categorical-Bank.pptx`** — the Category 02 deep dive: 18 slides, 12 categorical layouts in 3 families (see below). Includes speaker notes with facilitation tips.
 
 ## Category 01 deep dive — the three families
 
@@ -12,6 +13,14 @@ A PowerPoint template bank for **corporate instructional training** (adult learn
 | **A · Flow & Sequence** | "It moves." | A1 Process map (ADDIE) · A2 Flowchart (is training the answer?) · A3 Swimlane (request intake) · A4 Cycle loop (Kolb) · A5 Timeline roadmap (program rollout) · A6 Funnel (change adoption) |
 | **B · Structure & Levels** | "It nests." | B1 Hierarchy (competency framework) · B2 Pyramid (Kirkpatrick) · B3 Staircase (Dreyfus skill stages) · B4 Nested layers (rings around the learner) |
 | **C · Relationships & Systems** | "It connects." | C1 Concept map (feedback that lands) · C2 Hub & spoke (L&D ecosystem) · C3 Input–Process–Output (course production system) · C4 Fishbone (adoption stalled) · C5 Gap bridge (today → target) |
+
+## Category 02 deep dive — the three families
+
+| Family | Verb | Templates |
+|--------|------|-----------|
+| **D · Name & Chunk** | "Give it a name." | D1 Category grid (communication styles) · D2 Topic breakdown (year one as a manager) · D3 Acronym frame (SMART goals) · D4 Term card (near miss: is / is not / edge case) |
+| **E · Sort & Position** | "Put it in its place." | E1 2×2 matrix (urgent/important) · E2 Spectrum (delegation levels) · E3 Attribute matrix (delivery methods scored) · E4 Sorting buckets (data classification) |
+| **F · Compare & Contrast** | "Hold them side by side." | F1 Comparison table (SBI vs GROW vs STAR) · F2 Venn (who owns development) · F3 Do vs don't (the weekly 1:1) · F4 Before vs after (performance conversations) |
 
 ## The three categories
 
@@ -43,6 +52,7 @@ npm install pptxgenjs react-icons react react-dom sharp
 node make-icons.js    # renders the icon PNGs into assets/
 node build-deck.js    # writes Training-Slide-Template-Bank.pptx
 node build-cat01.js   # writes Category-01-Logical-Structural-Bank.pptx
+node build-cat02.js   # writes Category-02-Categorical-Bank.pptx
 ```
 
 Palette, fonts, and shared layout helpers are constants at the top of `build-deck.js`.
