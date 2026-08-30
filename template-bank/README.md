@@ -60,6 +60,22 @@ Supporting slides: title, framework overview, three section dividers, and a clos
 
 Grounded in instructional content-type research (Ruth Clark, *Developing Technical Training*; Clark & Lyons, *Graphics for Learning*) and cognitive-load chunking.
 
+## AI prompts (script → deck workflow)
+
+The [`prompts/`](prompts/) folder operationalizes the bank for real client work — a client script +
+source material in, an accessible, traceable foundational-teaching deck out:
+
+- [`prompts/one-shot-prompt.md`](prompts/one-shot-prompt.md) — copy-paste CRAFT prompt (Context,
+  Role, Action, Format, Target) with `{{PLACEHOLDERS}}` for the script, source material, and the
+  organizational template. Pipeline: inventory with S/M-IDs → traceable learning objectives →
+  synthesis into named chunks → knowledge-type classification → layout choice from this bank →
+  slide plan with narration in speaker notes → WCAG 2.1 AA + Mayer design rules → self-check.
+- [`prompts/copilot-agent-design.md`](prompts/copilot-agent-design.md) — the same pipeline as a
+  Microsoft Copilot implementation: a single declarative agent (Option 1) and a Copilot Studio
+  multi-agent pipeline (Option 2: Orchestrator → Objectives Analyst → Synthesizer → Slide
+  Architect → Accessibility QA), plus the operator SOP for building the .pptx via Copilot in
+  PowerPoint on the organizational template.
+
 ## Rebuilding the deck
 
 The deck is generated from code, so it can be re-themed or extended reproducibly:
