@@ -1,6 +1,17 @@
 # Training Slide Template Bank
 
-A PowerPoint template bank for **corporate instructional training** (adult learning in large organizations). The deck is **`Training-Slide-Template-Bank.pptx`** — 18 slides, all English, presenting 12 reusable layouts organized by knowledge type, each shown with a worked L&D example and a "use when" rule.
+A PowerPoint template bank for **corporate instructional training** (adult learning in large organizations). Two decks, all English, every template shown with a worked L&D example and a "use when" rule:
+
+- **`Training-Slide-Template-Bank.pptx`** — the overview bank: 18 slides, 12 reusable layouts across all three knowledge-type categories.
+- **`Category-01-Logical-Structural-Bank.pptx`** — the Category 01 deep dive: 21 slides, 15 logical/structural layouts in 3 families (see below). Includes speaker notes with facilitation tips.
+
+## Category 01 deep dive — the three families
+
+| Family | Verb | Templates |
+|--------|------|-----------|
+| **A · Flow & Sequence** | "It moves." | A1 Process map (ADDIE) · A2 Flowchart (is training the answer?) · A3 Swimlane (request intake) · A4 Cycle loop (Kolb) · A5 Timeline roadmap (program rollout) · A6 Funnel (change adoption) |
+| **B · Structure & Levels** | "It nests." | B1 Hierarchy (competency framework) · B2 Pyramid (Kirkpatrick) · B3 Staircase (Dreyfus skill stages) · B4 Nested layers (rings around the learner) |
+| **C · Relationships & Systems** | "It connects." | C1 Concept map (feedback that lands) · C2 Hub & spoke (L&D ecosystem) · C3 Input–Process–Output (course production system) · C4 Fishbone (adoption stalled) · C5 Gap bridge (today → target) |
 
 ## The three categories
 
@@ -31,6 +42,7 @@ cd template-bank
 npm install pptxgenjs react-icons react react-dom sharp
 node make-icons.js    # renders the icon PNGs into assets/
 node build-deck.js    # writes Training-Slide-Template-Bank.pptx
+node build-cat01.js   # writes Category-01-Logical-Structural-Bank.pptx
 ```
 
 Palette, fonts, and shared layout helpers are constants at the top of `build-deck.js`.
