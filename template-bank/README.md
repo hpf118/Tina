@@ -6,6 +6,7 @@ A PowerPoint template bank for **corporate instructional training** (adult learn
 - **`Category-01-Logical-Structural-Bank.pptx`** — the Category 01 deep dive: 21 slides, 15 logical/structural layouts in 3 families (see below). Includes speaker notes with facilitation tips.
 - **`Category-02-Categorical-Bank.pptx`** — the Category 02 deep dive: 18 slides, 12 categorical layouts in 3 families (see below). Includes speaker notes with facilitation tips.
 - **`Category-03-Concrete-Visual-Bank.pptx`** — the Category 03 deep dive: 18 slides, 12 concrete/visual layouts in 3 families (see below). Image areas are styled placeholder frames ("replace with the REAL screenshot/photo") so the bank stays reusable. Includes speaker notes with facilitation tips.
+- **`Text-Image-Combination-Bank.pptx`** — Deck 4: 18 slides, 12 text + image combination layouts in 3 families (see below). Models BOTH placeholder kinds: guided text placeholders ("[Definition · 2–3 sentences…]", "[Part name]", "[caption]") and image frames — every layout carries the full text anatomy (title / definition / breakdown / captions).
 
 ## Category 01 deep dive — the three families
 
@@ -30,6 +31,14 @@ A PowerPoint template bank for **corporate instructional training** (adult learn
 | **G · Point & Name** | "Show me where." | G1 Annotated tour (forklift pre-shift check) · G2 Labeled parts (the AED on the wall) · G3 Zoom detail (SDS section 4) · G4 Multi-view (vehicle walkaround) |
 | **H · Walk It Through** | "Show me how." | H1 Photo steps (hybrid meeting room) · H2 Screen flow (expense approval) · H3 Before/during/after (5S reset) · H4 Demo storyboard (sales-demo video frames) |
 | **I · Set the Standard** | "Show me the bar." | I1 Correct vs incorrect (pallet stacking) · I2 Spot the hazards (office fire safety) · I3 Good–better–best (defect photos) · I4 Acceptance card (ready-to-ship pallet) |
+
+## Deck 4 (Text + Image Combination) — the three families
+
+| Family | Verb | Layouts |
+|--------|------|---------|
+| **J · Text-Led** | "The words teach; the image anchors." | J1 Concept intro (definition + breakdown + hero image) · J2 Center image (text orbits the image) · J3 Split hero (full-height image + text panel) · J4 Statement + band (claim, paragraph, evidence images) |
+| **K · Balanced** | "Words and pictures share the frame." | K1 Tilted strips (skewed image columns + stats) · K2 Arc cascade (text left, image sweep right) · K3 Wave circles (five circles riding a wave) · K4 Editorial rows (alternating image/text) |
+| **L · Image-Led** | "The pictures carry it; text captions." | L1 Film strip (frames + sprockets) · L2 Fan spread (hand-of-cards) · L3 Mosaic + text tile (grid with one talking tile) · L4 Gallery wall (staggered frames on a rail) |
 
 ## The three categories
 
@@ -63,6 +72,7 @@ node build-deck.js    # writes Training-Slide-Template-Bank.pptx
 node build-cat01.js   # writes Category-01-Logical-Structural-Bank.pptx
 node build-cat02.js   # writes Category-02-Categorical-Bank.pptx
 node build-cat03.js   # writes Category-03-Concrete-Visual-Bank.pptx
+node build-combo.js   # writes Text-Image-Combination-Bank.pptx
 ```
 
 Palette, fonts, and shared layout helpers are constants at the top of `build-deck.js`.
