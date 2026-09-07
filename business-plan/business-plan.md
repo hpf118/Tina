@@ -29,13 +29,27 @@ Peppa Pig (owned by Hasbro through Entertainment One), Snoopy and the Peanuts ca
 
 There is a second, smaller version of the same problem. The prototypes are AI-generated art. In the United States, purely AI-generated images are not eligible for copyright; Canada has not settled the question; China's courts have gone both ways. To own what you sell, the parts that matter (character designs, scripts, curriculum, page layouts) must have clear human authorship and be documented as such.
 
-**The fix is simpler than it looks.** Keep the mechanism and change the cast. The child stays the hero. Replace Peppa with an original companion family, Snoopy with an original dog sidekick, and Madame Gazelle with an original teacher. Your daughter did not fall in love with Peppa's copyright; she fell in love with a warm, funny, family-centred world with short episodes. Those are format choices, and you can copy the format freely. Every section below assumes you make this change.
+**The fix is simpler than it looks, and it makes the product better.** Keep the mechanism and change what the story is built on. Instead of a borrowed cartoon world, build every comic on two things that are entirely the family's own:
+
+1. **The child's avatar**, plus avatars of the real people and pets in the child's life: a friend, a sibling, a parent, a grandparent, the family dog. In your Wonderland prototype the friend was already a real friend. That was the part the two girls cared about.
+2. **The child's own life experiences** as the setting for the science. The trip to the amusement park becomes the forces comic. The rainy walk to school becomes the water-cycle comic. Bath time becomes floating and sinking. Baking with grandma becomes states of matter. The parent picks the experience from a menu, or describes a real moment in two sentences, and the comic opens there.
+
+One original mascot (a curious animal or robot guide) carries the brand across titles and the YouTube series, and is designed by a human illustrator who assigns the copyright to you.
+
+Why this is stronger than the licensed-character version, not just safer:
+
+- **Pedagogically.** Anchoring a new concept in an experience the child has already had is the most reliable way to activate prior knowledge and get transfer. This is the principle behind situated learning and it is exactly what an education-measurement specialist would design. It is also a claim no competitor can make.
+- **Emotionally.** "Here is the physics of the day we went to the park together" is a memory book and a lesson at once. Parents and grandparents buy memory books. That was your own first instinct ("a memory for their kids"), and it survives the pivot intact.
+- **Commercially.** Every new experience is a new purchase. A family that buys the amusement-park comic in July buys the camping comic in August and the first-snow comic in December. The licensed character gave you one hook. Life experiences give you a hook every month.
+- **Legally.** Everything in the book belongs to the family or to you. Nothing in it can be taken down.
+
+Your daughter did not fall in love with Peppa's copyright. She fell in love with a warm, funny, family-centred world with short episodes about ordinary days. Those are format choices, and building the stories on her actual ordinary days copies the format more faithfully than Peppa ever could. Every section below assumes you make this change.
 
 ---
 
 ## 1. Executive summary
 
-**The business.** A direct-to-consumer publisher of personalized, curriculum-aligned science and social-emotional comics for children aged 5 to 10, delivered as printed hardcover books, digital comics, and a subscription "club", with an animated YouTube series as the top of the marketing funnel. The child is the protagonist. Each title exists at two or three developmental levels so the same story can be repurchased as the child grows.
+**The business.** A direct-to-consumer publisher of personalized, curriculum-aligned science and social-emotional comics for children aged 5 to 10, delivered as printed hardcover books, digital comics, and a subscription "club", with an animated YouTube series as the top of the marketing funnel. The child, their real friends and family, and an experience the child has actually had are the story; the science is found inside it. Each title exists at two or three developmental levels so the same story can be repurchased as the child grows.
 
 **The customer.** Parents (and grandparents) of children aged 5 to 10 in Canada and the United States who want screen-time alternatives that teach something. Secondary: elementary teachers and homeschool families. Later: Chinese-speaking families in North America, then mainland China through a local partner.
 
@@ -45,7 +59,7 @@ There is a second, smaller version of the same problem. The prototypes are AI-ge
 
 **Model and targets.** Bootstrapped. Base-case Year 1 revenue about CAD 110,000 on 1,000 printed books, 1,500 digital comics and 400 subscribers; Year 3 about CAD 900,000 with a school channel and a China partner. Contribution margin per printed book about CAD 24 before marketing. Break-even in Year 1 on roughly 1,600 printed-book equivalents. Detailed model in Section 7.
 
-**The first 90 days.** Incorporate, file trademarks (Canada, US, and China, because China is first-to-file), disclose outside activity to your employer, build an original cast with a human illustrator, convert the five prototypes to the new cast, launch a waitlist landing page, and pre-sell 50 books to validate demand before building anything automated.
+**The first 90 days.** Incorporate, file trademarks (Canada, US, and China, because China is first-to-file), disclose outside activity to your employer, commission the avatar system and mascot from a human illustrator, rebuild the five prototypes on the child-avatar and life-experience model, launch a waitlist landing page, and pre-sell 50 books to validate demand before building anything automated.
 
 ---
 
@@ -53,7 +67,7 @@ There is a second, smaller version of the same problem. The prototypes are AI-ge
 
 ### 2.1 What the product is
 
-A **personalized learning comic**: a 24 to 32 page story in which the child (name, appearance, a friend or sibling, a family pet) investigates one science phenomenon with an original cast of companions. Each title contains:
+A **personalized learning comic built on the child's own life**: a 24 to 32 page story in which the child (name, appearance) and the real people in their life (a friend, a sibling, a parent, a pet) investigate one science phenomenon inside an experience the child has actually had. An original mascot guides the inquiry. Each title contains:
 
 | Element | Purpose | Already in your prototypes |
 |---|---|---|
@@ -67,7 +81,32 @@ A **personalized learning comic**: a 24 to 32 page story in which the child (nam
 | Parent page: what to ask, what to notice | Parent engagement and evidence of learning | Add (your measurement background) |
 | QR code to the animated episode | Links the book to the YouTube series | Add |
 
-### 2.2 Product ladder
+### 2.2 The experience library
+
+The parent chooses the experience; the experience determines the science. This table is the product catalogue and the content roadmap at once. Each row is one title at two levels.
+
+| Everyday experience | Science or learning focus | Grade band | Season or trigger |
+|---|---|---|---|
+| A day at the amusement park | Force, gravity, inertia, energy, circular motion | 2 to 4 | Summer trips |
+| A rainy walk and a puddle | Water cycle, evaporation, infiltration | 2 to 4 | Spring, fall |
+| A rainbow after the rain | Light, refraction, reflection, colour | 2 to 4 | Any |
+| Bath time | Floating, sinking, density | K to 2 | Any |
+| Baking with a grandparent | States of matter, heat, mixtures | 1 to 3 | Holidays |
+| The playground swing | Pendulums, energy, friction | 1 to 3 | Any |
+| First snow | Melting, freezing, insulation | 1 to 3 | Winter |
+| Learning to ride a bike | Balance, friction, forces | 2 to 4 | Spring, birthdays |
+| A night looking at the moon | Moon phases, day and night, shadows | 2 to 4 | Any |
+| Planting a seed | Plant needs, life cycles, fair tests | 1 to 3 | Spring |
+| A camping trip | Sound, heat, light, animal habitats | 2 to 4 | Summer |
+| Building a fort | Structures, stability, materials | 1 to 3 | Any |
+| Sharing toys with a new friend | Fairness, turn-taking, feelings (social-emotional) | K to 2 | Back to school |
+| A disagreement with a sibling | Emotions, perspective-taking, repair | 1 to 3 | Any |
+| The first day at a new school | Belonging, courage, making friends | K to 2 | September |
+| Counting out a birthday party | Measurement, grouping, fractions (math) | 1 to 3 | Birthdays |
+
+Launch with the first three (your existing prototypes, re-cast). Add two titles per month. The library should reach 24 experiences by the end of Year 1 and about 60 by the end of Year 2, at which point almost any week in a family's life maps to a comic.
+
+### 2.3 Product ladder
 
 | Tier | Product | Price (CAD) | Notes |
 |---|---|---|---|
@@ -78,17 +117,19 @@ A **personalized learning comic**: a 24 to 32 page story in which the child (nam
 | Subscription | "Science Detective Club": one new personalized digital comic plus experiment sheet and video every month; printed annual collection at a discount | 14.99 per month or 149 per year | Recurring revenue, retention through the leveled ladder |
 | School | Classroom licence: non-personalized leveled comics, teacher guide, assessment rubric, 30 student digital copies | 199 per classroom per year | Sold to teachers and homeschool co-ops |
 
-### 2.3 Content packs (launch order)
+### 2.4 Subject packs (how the library is sold)
 
-1. **Physics Detectives** (force, gravity, inertia, energy, circular motion). Your Wonderland set, re-cast and set in a generic "Big Park" amusement park.
+The experiences are grouped into packs for browsing, bundles and the school channel:
+
+1. **Physics Detectives** (force, gravity, inertia, energy, circular motion). Your Wonderland set, re-cast and set in a generic amusement park the family names.
 2. **Earth and Water** (water cycle, weather, seasons). Your Puddle Mystery.
 3. **Light and Colour** (rainbows, shadows, reflection). Your Rainbow Mystery.
 4. **Math Detectives** (measurement, fractions, patterns). Extends into a second subject with the same format.
-5. **Friendship and Feelings** (social-emotional learning: sharing, disagreement, big feelings). Your Bluey idea with an original cast. Note that SEL content is where personalization is most powerful, because the child sees themselves resolving a conflict.
+5. **Friendship and Feelings** (social-emotional learning: sharing, disagreement, big feelings). Your Bluey idea, now built on the child's real friends and siblings. Social-emotional content is where personalization is most powerful, because the child sees themselves resolving a real conflict with a real person.
 
 Each pack ships with Level 1 (Grades 2 to 3) and Level 2 (Grade 4) from the start, and a Level 0 (Kindergarten to Grade 1, picture-heavy, one sentence per panel) added in Year 2 to capture your daughter's age group and younger.
 
-### 2.4 Curriculum alignment
+### 2.5 Curriculum alignment
 
 Map every title to three frameworks and print the codes on the parent page:
 
@@ -98,9 +139,16 @@ Map every title to three frameworks and print the codes on the parent page:
 
 This is cheap for you to do and impossible for the AI story apps to do credibly. It is also what teachers and school buyers look for first.
 
-### 2.5 Personalization inputs and the privacy design
+### 2.6 Personalization inputs and the privacy design
 
-Collect the minimum: child's first name, age or grade, a hair-and-skin avatar chosen from a picker, optional friend's name, optional pet. **Do not store uploaded photos.** If you offer photo-to-avatar, convert the photo to an avatar description at upload time, delete the photo immediately, and say so on the page. This single design choice removes most of your privacy exposure under PIPEDA (Canada), Quebec's Law 25, COPPA (US), GDPR-K (EU) and PIPL (China, which requires separate parental consent for any data of a child under 14).
+Collect the minimum:
+
+- Child's first name, age or grade, and an avatar built from a picker (skin tone, hair, glasses, hijab, wheelchair, and so on).
+- The experience, chosen from the library, plus an optional two-sentence "what happened" written by the parent ("We went to the park on Saturday and Tina screamed on the swing ride"). The sentence appears in the opening panel and nowhere else.
+- Up to three companions, each a name plus an avatar: a friend, a sibling, a parent or grandparent, a pet.
+- Optional: the name of the real place ("Wonderland" becomes "the park" unless the family types a name they are entitled to use in their own book).
+
+**Do not store uploaded photos.** If you offer photo-to-avatar, convert the photo to an avatar description at upload time, delete the photo immediately, and say so on the page. This single design choice removes most of your privacy exposure under PIPEDA (Canada), Quebec's Law 25, COPPA (US), GDPR-K (EU) and PIPL (China, which requires separate parental consent for any data of a child under 14).
 
 ---
 
@@ -134,7 +182,7 @@ At CAD 60 average annual spend per buying household, Canada plus the US alone is
 | Mystery Science, Generation Genius | Classroom science video subscriptions | Not for parents, not printed, not personalized |
 | Kiwico, Little Passports | Subscription STEM kits | Physical kits, expensive to ship, no story or literacy component |
 
-**Position:** "The only personalized book that is also a real lesson, designed by an education scientist, and that grows with your child." Nobody else can say all four parts of that sentence.
+**Position:** "The only book where your child, your family and your own day become the science lesson, designed by an education scientist, and that grows with your child." Nobody else can say all four parts of that sentence.
 
 ---
 
@@ -153,12 +201,13 @@ Revenue mix target by Year 3: 40 percent printed, 20 percent digital, 30 percent
 
 The goal is a pipeline where **you design once and the system personalizes many times**, with a human checking science accuracy and art quality before anything ships.
 
-1. **Character bible (one-time, human illustrator).** Commission an illustrator to design the original cast: the companion family (animal or human), the dog sidekick, the teacher, and the child avatar system (six skin tones, eight hairstyles, glasses, hijab, and so on). Get written assignment of copyright. This is the single most important spend in Year 1: roughly CAD 4,000 to 8,000 for a professional character sheet set.
-2. **Script templates (you).** One master script per title with personalization slots: `{child}`, `{friend}`, `{pet}`, `{he/she/they}`. Two levels per title. Science reviewed by a second educator or a subject-matter friend.
-3. **Art generation (AI, trained on your own cast).** Train a consistent-character model (a LoRA or equivalent reference-image pipeline) on the illustrator's sheets so the cast looks the same on every page. Generate panels for each avatar combination, or generate backgrounds once and composite avatars. Human touch-up of every printed page. Use a provider whose terms allow commercial use and do not train on your inputs.
-4. **Layout automation.** HTML or InDesign templates that pull the personalized text and panels into a print-ready PDF (CMYK, bleed, 300 dpi). Your husband's animation pipeline can share the same assets.
-5. **Fulfilment.** Print-on-demand with an API: Lulu Direct, Gelato, Printful, or Blurb. Gelato and Printful print locally in Canada, the US, Europe and Australia, which keeps shipping under CAD 12 and delivery under a week. Digital orders are delivered by email link within minutes.
-6. **Quality gate.** Every new title: science review, reading-level check (Flesch-Kincaid and a hand read), sensitivity check of the avatar system, a physical proof copy.
+1. **Character bible (one-time, human illustrator).** Commission an illustrator to design the avatar system (child and companion avatars: six skin tones, eight hairstyles, ages from toddler to grandparent, glasses, hijab, wheelchair, common pets) and the one original mascot. Get written assignment of copyright. This is the single most important spend in Year 1: roughly CAD 4,000 to 8,000 for a professional character sheet set.
+2. **Experience settings (once per title).** Each experience gets a small set of backgrounds (the park entrance, the swing ride, the queue) generated once and reused for every family. Backgrounds are the expensive part of the art and they do not change per child.
+3. **Script templates (you).** One master script per title with personalization slots: `{child}`, `{friend}`, `{sibling}`, `{pet}`, `{place}`, `{what_happened}`, `{he/she/they}`. Two levels per title. Science reviewed by a second educator or a subject-matter friend.
+4. **Art generation (AI, trained on your own cast).** Train a consistent-character model (a LoRA or equivalent reference-image pipeline) on the illustrator's sheets so avatars look the same on every page. Composite the family's avatars onto the shared backgrounds. Human touch-up of every printed page. Use a provider whose terms allow commercial use and do not train on your inputs.
+5. **Layout automation.** HTML or InDesign templates that pull the personalized text and panels into a print-ready PDF (CMYK, bleed, 300 dpi). Your husband's animation pipeline can share the same assets.
+6. **Fulfilment.** Print-on-demand with an API: Lulu Direct, Gelato, Printful, or Blurb. Gelato and Printful print locally in Canada, the US, Europe and Australia, which keeps shipping under CAD 12 and delivery under a week. Digital orders are delivered by email link within minutes.
+7. **Quality gate.** Every new title: science review, reading-level check (Flesch-Kincaid and a hand read), sensitivity check of the avatar system, a physical proof copy.
 
 Time cost per new title once the pipeline exists: about 20 to 30 hours of your time across two levels, plus CAD 500 to 1,500 in contractor and generation costs.
 
@@ -176,7 +225,7 @@ Time cost per new title once the pipeline exists: about 20 to 30 hours of your t
 
 | Channel | Role | Owner | Cost |
 |---|---|---|---|
-| YouTube (animated episodes, 3 to 5 minutes, original cast) | Awareness, brand, SEO ("physics for kids") | Husband | Time |
+| YouTube (animated episodes, 3 to 5 minutes, mascot plus a sample family) | Awareness, brand, SEO ("physics for kids") | Husband | Time |
 | YouTube Shorts, Instagram Reels, TikTok (parent-facing 30 to 60 second clips: "the physics of a roller coaster explained to a 7-year-old") | Discovery | Founder on camera | Time |
 | Pinterest (printable worksheets, experiment sheets) | Long-tail traffic from homeschool parents; Pinterest pins keep driving traffic for years | Contractor | CAD 200 per month |
 | Email (free sample comic in exchange for email, then a 5-email sequence) | Conversion | Founder | Tool cost |
@@ -188,7 +237,7 @@ Time cost per new title once the pipeline exists: about 20 to 30 hours of your t
 
 ### 6.3 Launch sequence
 
-1. **Waitlist (month 2).** One-page site: the story of why you built it, three sample spreads with the new cast, "Reserve your child's first mystery" with a CAD 10 deposit. Target 200 emails and 50 deposits.
+1. **Waitlist (month 2).** One-page site: the story of why you built it, three sample spreads built on the new model, "Reserve your child's first mystery" with a CAD 10 deposit. Target 200 emails and 50 deposits.
 2. **Founding families (month 4).** Ship the first 50 books by hand. Ask every family for a photo of the child with the book and a one-sentence quote. This becomes the website.
 3. **Public launch (month 5).** Open ordering, announce on YouTube with the first three animated episodes, run PR.
 4. **Gift season (months 8 to 10).** Paid ads, bundles, "give the gift of science" campaign, guaranteed delivery cut-offs.
@@ -331,7 +380,7 @@ Do these in this order. Items 1 to 3 come before you sell anything.
 - **The Curious Crew** (distinctive, works in Chinese as 好奇小队).
 - **Mystery Lab** (short, strong in search, may be crowded).
 
-Name the cast first. A distinctive companion character name (the way "Peppa" and "Bluey" carry their brands) is more protectable than a descriptive series name, and it becomes the YouTube channel.
+Name the mascot first. A distinctive mascot name (the way "Peppa" and "Bluey" carry their brands) is more protectable than a descriptive series name, and it becomes the YouTube channel.
 
 ---
 
@@ -396,11 +445,11 @@ Rule: nothing ships without you reading it, until Year 2. Your name and credenti
 ## 14. What to do this month
 
 1. Book a meeting with your departmental values and ethics office and bring a one-page description of the business.
-2. Write a two-page character brief for the original cast and send it to three illustrators for quotes.
+2. Write a two-page brief for the avatar system and the mascot and send it to three illustrators for quotes.
 3. Choose a working brand name and search it on CIPO, USPTO, CNIPA and as a domain and YouTube handle.
 4. Instruct a trademark agent to file in Canada, the US and China.
 5. Register a federal corporation with both spouses as shareholders.
-6. Rewrite one prototype (the Rainbow Mystery, both levels) with the new cast and placeholder names, and order a proof copy from Gelato and from Lulu to compare quality and cost.
+6. Rewrite one prototype (the Rainbow Mystery, both levels) on the child-avatar and life-experience model with placeholder names, and order a proof copy from Gelato and from Lulu to compare quality and cost.
 7. Set up a one-page waitlist site and post the first parent-facing video: why an education scientist built a physics comic for her six-year-old.
 8. Interview ten parents of children aged 5 to 10, including three who are not your friends. Ask what they would pay and what they would want the book to do. Adjust the prices in Section 4 accordingly.
 
