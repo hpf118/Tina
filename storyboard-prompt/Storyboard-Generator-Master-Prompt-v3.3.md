@@ -67,6 +67,7 @@ Build and validate these internally. Every artifact must inform the accuracy, so
 | Evidence-Based Production QA record | Internal, mandatory | the Acceptance Checks |
 | Final Section Inventory | Internal, mandatory (this table, with Included or Excluded recorded per artifact) | This table |
 | Step 2 Verification Gate | Internal checkpoint; display only when the user asks to review objectives or planning artifacts, or a critical blocking gap prevents accurate generation | Section A1.5 |
+| Adapted Project Prompt (Step 3): a copy-ready project prompt that applies this generator's rules to the current project's intake, sources, authoring tool, template, and confirmed decisions, for reuse by other designers on the same project | Internal; export on request | Section C3 fields, with the rules of Parts A, F, and T tailored to the project |
 
 Do not export slide-level developer notes, source logs, traceability maps, planning artifacts, SME verification items, assumptions, QA records, or appendices unless the user explicitly requests them. Keep unresolved items in the SME Verification List, Source Access and Gap Log, Assumptions and Caveats, or Internal Slide Notes. Never place unresolved SME comments in learner-facing content.
 
@@ -205,7 +206,7 @@ Include the verified broad learning objective(s) and the storyboard-ready sub-le
 
 ### A1.5 Step 2: Verification Gate
 
-Use Step 2 as an internal verification checkpoint when the user requests a storyboard. Confirm that every objective is verified or explicitly gap-approved, the source hierarchy is applied, scenario seeds are logged, and gaps are recorded. Do not display the objective map, source hierarchy, scenario seeds, gaps, or verification request unless the user explicitly asks to review them. If a critical blocking gap prevents accurate generation, ask only for the specific missing decision.
+Use Step 2 as an internal verification checkpoint when the user requests a storyboard. Confirm that every objective is verified or explicitly gap-approved, the source hierarchy is applied, scenario seeds are logged, and gaps are recorded. Do not display the objective map, source hierarchy, scenario seeds, gaps, or verification request unless the user explicitly asks to review them. If a critical blocking gap prevents accurate generation, ask only for the specific missing decision. Step 3, on request only: after verification, produce the Adapted Project Prompt described in Section C2.3.
 
 ## A2. Step 3: Design the module architecture
 
@@ -786,10 +787,10 @@ Source anchor(s) with exact locations; evidence quote or source note; evidence r
 Gap or conflict note; where the anchor is preserved:
 Mode (1 to 5) and classification; required learner action; cognitive level:
 Approved component or question type; compatibility status; library entry; required component objects; required fields; fields present; missing fields; conditional requirements:
-Best interaction pattern and why it fits the objective and performance level; scenario seed used; context variables included:
+Best interaction pattern and why it fits the objective and performance level; target or criterion; required evidence of performance; feedback approach; scenario seed used; context variables included:
 Scoring; assessment placement; scored-check distribution role (early objective / later objective / highest-level performance check / not applicable):
-Correct answer or mapping status; correct answer text if scored MCQ: [letter]. [exact answer text]; distractor or error logic and misconception rationale; attempts; feedback states; randomization and randomized option mapping; retry or reset; completion; branching logic:
-Taught on, practised on, assessed on slide(s); narration decision:
+Correct answer or mapping status; correct answer text if scored MCQ: [letter]. [exact answer text]; distractor or error logic and misconception rationale; attempts; feedback states; randomization and randomized option mapping; retry or reset; completion; build or implementation notes; interaction logic; feedback logic; branching logic:
+Taught on, modelled or exemplified on, practised on, assessed on slide(s); narration decision:
 Asset or multimedia requirement; production source; request or asset reference; multimedia handoff status:
 Accessibility notes: keyboard navigation; screen-reader or label guidance; alt text, long description, captions, transcript notes; accessible equivalent:
 Development defaults applied; Development-owned decisions omitted:

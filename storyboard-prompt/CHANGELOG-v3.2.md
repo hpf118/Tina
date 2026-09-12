@@ -180,4 +180,17 @@ v3.3 restructures v3.2 into the CRAFT frame used by the other prompts in this re
 
 ## Word count
 
-v3.2 about 15,900 words; v3.3 about 17,900 words. The additions are the rules above and the two context blocks; nothing was removed.
+v3.2 about 15,900 words; v3.3 about 18,000 words. The additions are the rules above and the two context blocks; nothing was removed.
+
+## v3.3 completeness audit against v3.1
+
+A line-by-line comparison of the original v3.1 against v3.3 (413 distinctive terms, quoted strings, markers, numbers, and field names, plus a content-word coverage score for all 592 substantive lines) found no lost rule. It found these items, which were then restored:
+
+| Item from v3.1 | Status before the audit | Restored in |
+|---|---|---|
+| Step 3 "Adapted Project Storyboard Master Prompt": a copy-ready project prompt adapted to the new project | Removed as dead framing (it wrapped sections A to S) | C2.3 artifact table as an export-on-request artifact; A1.5 names it as Step 3 |
+| Chunking Map field "Worked example/model slide(s)" | Present only in the Objective Coverage Map (Appendix B2) | Appendix C |
+| Assessment Map fields "Target or criterion", "Required evidence", "Required feedback"; Interaction and Assessment Map field "Feedback approach" | Not carried as named fields | Appendix C |
+| Internal notes fields "Build / implementation notes", "Interaction logic", "Feedback logic" | Not carried as named fields | Appendix C |
+
+Deliberately not carried, by decision: Notes for Maintaining the Generator (section 5 of this file), Appendix 12 (replaced by the C2.3 table), Appendix 14 (its resolutions are now the rules), Layer 2 section 1 (release notes), Layer 2 section 29 (integration instructions), the Public Affairs example in Appendix 10 (replaced by a neutral example), the two alternative wordings of the "confirm component" marker (one marker), and the three-mode Interaction model (replaced by five modes).
