@@ -131,3 +131,53 @@ Each of these can be reversed by editing the single place in v3.2 where the rule
 - Periodically update the accessibility wording in section 11 to align with the organization's current accessibility standard and production environment.
 - Editing discipline: every rule has one home and at most one acceptance line. When adding a rule, add it in one section and add one line to 14.2. When changing a rule, change it in its home and its acceptance line and nowhere else. Do not append revision packages; integrate them.
 - Before each release, re-run the checks that produced this version: search for duplicate statements of the same rule, search for a rule and its acceptance line disagreeing, and confirm that every template in the appendices matches the field spellings in sections 9.4 and 10.1.
+
+# v3.3 (CRAFT edition): what changed from v3.2
+
+v3.3 restructures v3.2 into the CRAFT frame used by the other prompts in this repository (Context, Role, Action, Format, Target audience and Tone) and adds the rules needed by the second and third batches of reviewer comments on the MOD 8 storyboard. Every v3.2 rule is carried into v3.3 unchanged unless listed below; the build script verifies that every v3.2 body line survives.
+
+## Where the v3.2 sections went
+
+| v3.2 | v3.3 | v3.2 | v3.3 |
+|---|---|---|---|
+| Role and Task | R — Role | 7.1 to 7.3, 7.5 | A3.1 to A3.4 |
+| 1.1 to 1.3 | C2.1 to C2.3 | 7.4 | F5.1 |
+| 1.4 | C3 | 8.1 to 8.5 | A4.1 to A4.5 |
+| 2.1 to 2.6 | C4.1 to C4.6 | 9.1 to 9.3 | A5.1 to A5.3 |
+| 3.1 to 3.5 | A1.1 to A1.5 | 9.4 | F5.2 |
+| 4.1 to 4.4 | A2.1 to A2.4 | 10.1 | F4 |
+| 5.1 to 5.3 | T2.1 to T2.3 | 10.2, 10.3 | A6.1, A6.2 |
+| 5.4, 5.5 | F3.1, F3.2 | 11.1, 11.2 | A7.1, A7.2 |
+| 6 | T3 | 12 | A8 |
+| 13.1, 13.2 | F1, F2 | 13.3, 14.1 | A9.1, A9.2 |
+| 14.2 | Acceptance Checks (final section) | Appendices A to F | Appendices A to F |
+
+## Rules added in v3.3
+
+| Rule | Reviewer comment it answers | Where |
+|---|---|---|
+| Complete sentences for any line that states a fact, rule, condition, relationship, or action; fragments only for names, labels, and noun-phrase options | "Should use full sentences - otherwise it is difficult to understand and connect meaning" | T2.1; acceptance line 12 |
+| One slide, one term | "You call them stages and processes - which is it?" | T2.1; acceptance line 12 |
+| Slide Title column equals the Heading 1 | "Titles should be the same" | F3.1; acceptance line 10 |
+| Teach by the job question: decision-type objectives are taught as a decision walk-through; comparison tables support, never replace, the worked example | "Consider restructuring the content around a workplace decision"; "not clear on when to use each one" | A2.5; A9.2; acceptance line 20 |
+| Stem before every practice or assessment activity | "What is the actual question stem? The intent of this activity is not immediately clear" | F5.1, F5.2, Appendix A; acceptance line 20 |
+| Plain-pair mappings using learner-visible names; no re-listing of items already in Text Content | "show this - no one has the time to try to figure out what this means" | A4.4; acceptance line 19 |
+| Behaviour fields (keyboard, focus, retry, reset, retained items, attempts, completion) are Development-owned and stay out of rows unless the slide is an exception | "Devs don't program this. Delete."; "it's already explained in the Dev notes at the top - no need to repeat here" | A4.2, A5.2; acceptance line 4 |
+| Attempts and Completion lines only when different from Developer Notes – All Slides | "if it's non-scoring why 2 attempts?" | A5.2, F5.2, Appendix A |
+| Non-scored practice: Final Incorrect Feedback repeats the Correct Feedback when the component reveals the model answer | "The correct feedback and 2nd incorrect should be the same. There is no need to state what the matches are" | A5.2 (decision 15 below) |
+| Mock-up for any layout with more than five objects or a non-obvious arrangement | "So you have a visual of how you want them to arrange the processes?" | F4; acceptance line 26 |
+| Objective derivation procedure with a domain-neutral worked example | Question on how the generator gets from a job requirement to progressive, task-based objectives | A1.3 |
+| Three readers (learner, client reviewer, developer) and known failure patterns | Context for all of the above | T1, C5, R |
+
+## Decisions taken in v3.3
+
+| # | Decision | Where to reverse it |
+|---|---|---|
+| 15 | For non-scored practice, when the component reveals the model answer after the final attempt (assumed for DominKnow matching, sorting, and sequence), Final Incorrect Feedback uses the Correct Feedback text and does not restate the answer. Scored questions still state the exact correct answer. If Development confirms the components do not reveal the model answer, delete the reveal clause in A5.2. | A5.2 |
+| 16 | Non-scored practice follows the Developer Notes – All Slides attempt convention unless intake 26E supplies a practice convention. If the client wants unlimited or single-attempt practice, state it in 26E. | A5.2 |
+| 17 | Behaviour fields default to the Development standard and are never marked for Development confirmation in a row; an undocumented behaviour is recorded in the Internal Slide Notes instead. | A4.2, A5.2 |
+| 18 | The mock-up threshold is five objects or more than one axis of arrangement. | F4 |
+
+## Word count
+
+v3.2 about 15,900 words; v3.3 about 17,900 words. The additions are the rules above and the two context blocks; nothing was removed.
