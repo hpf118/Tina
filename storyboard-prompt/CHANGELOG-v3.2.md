@@ -140,7 +140,7 @@ v3.3 restructures v3.2 into the CRAFT frame used by the other prompts in this re
 
 | v3.2 | v3.3 | v3.2 | v3.3 |
 |---|---|---|---|
-| Role and Task | R — Role | 7.1 to 7.3, 7.5 | A3.1 to A3.4 |
+| Role and Task | Role and Task (first section after the scissors line, as in v3.1), with responsibilities in R — Role | 7.1 to 7.3, 7.5 | A3.1 to A3.4 |
 | 1.1 to 1.3 | C2.1 to C2.3 | 7.4 | F5.1 |
 | 1.4 | C3 | 8.1 to 8.5 | A4.1 to A4.5 |
 | 2.1 to 2.6 | C4.1 to C4.6 | 9.1 to 9.3 | A5.1 to A5.3 |
