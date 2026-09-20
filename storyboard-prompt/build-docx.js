@@ -6,6 +6,7 @@ const { Document, Packer, Paragraph, TextRun, HeadingLevel, Table, TableRow, Tab
 
 const src = process.argv[2], out = process.argv[3];
 const lines = fs.readFileSync(src, 'utf8').split('\n');
+const docTitle = (lines.find(l => /^# /.test(l)) || '# Document').replace(/^# /, '').trim();
 const FONT = 'Arial';
 const PAGE_W = 12240, PAGE_H = 15840, MARGIN = 1080; // Letter, 0.75in margins
 const USABLE = PAGE_W - 2 * MARGIN; // 10080
@@ -115,7 +116,7 @@ while (i < lines.length) {
 
 const doc = new Document({
   creator: 'Learning Design',
-  title: 'Storyboard Generator Master Prompt v3.4',
+  title: docTitle,
   styles: {
     default: {
       document: { run: { font: FONT, size: 20, color: '000000' } },
@@ -131,7 +132,7 @@ const doc = new Document({
   sections: [{
     properties: { page: { size: { width: PAGE_W, height: PAGE_H }, margin: { top: MARGIN, bottom: MARGIN, left: MARGIN, right: MARGIN } } },
     footers: { default: new Footer({ children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [
-      new TextRun({ text: 'Storyboard Generator Master Prompt v3.4   |   Page ', font: FONT, size: 16, color: '000000' }),
+      new TextRun({ text: docTitle + '   |   Page ', font: FONT, size: 16, color: '000000' }),
       new TextRun({ children: [PageNumber.CURRENT], font: FONT, size: 16, color: '000000' }) ] })] }) },
     children
   }]
