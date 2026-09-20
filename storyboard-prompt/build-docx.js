@@ -26,6 +26,7 @@ function para(text, o = {}) {
 const children = [];
 let i = 0;
 let tableIdx = 0;
+const counts = [];
 while (i < lines.length) {
   let l = lines[i];
   if (!l.trim()) { i++; continue; }
@@ -40,6 +41,30 @@ while (i < lines.length) {
     children.push(new Paragraph({ children: runs(l.trim(), { bold: true, size: 24 }), alignment: AlignmentType.CENTER,
       spacing: { before: 240, after: 240 }, border: { top: { style: BorderStyle.DASHED, size: 6, color: '000000', space: 4 }, bottom: { style: BorderStyle.DASHED, size: 6, color: '000000', space: 4 } } }));
     i++; continue;
+  }
+  if (l.startsWith('```')) {
+    const label = l.slice(3).trim();
+    const body = [];
+    i++;
+    while (i < lines.length && !lines[i].startsWith('```')) { body.push(lines[i]); i++; }
+    i++; // closing fence
+    const text = body.join('\n');
+    const nchars = text.length;
+    const limit = label === 'instructions' ? 8000 : label === 'description' ? 1000 : label === 'name' ? 30 : null;
+    const border = { style: BorderStyle.SINGLE, size: 6, color: '000000' };
+    const paras = body.map(b => new Paragraph({ children: [new TextRun({ text: b.length ? b : ' ', font: FONT, size: 18, color: '000000' })], spacing: { after: 40, line: 252 } }));
+    children.push(new Table({ rows: [new TableRow({ children: [new TableCell({ width: { size: USABLE, type: WidthType.DXA },
+      borders: { top: border, bottom: border, left: border, right: border },
+      shading: { type: ShadingType.CLEAR, fill: 'F3F3F3', color: 'auto' }, margins: { top: 100, bottom: 100, left: 140, right: 140 }, children: paras })] })],
+      width: { size: USABLE, type: WidthType.DXA }, columnWidths: [USABLE] }));
+    if (limit) {
+      const ok = nchars <= limit;
+      children.push(new Paragraph({ children: [new TextRun({ text: `Character count: ${nchars.toLocaleString()} of ${limit.toLocaleString()} allowed${ok ? '' : '  — OVER LIMIT'}`, italics: true, font: FONT, size: 16, color: ok ? '000000' : 'C00000' })], spacing: { after: 160 } }));
+      counts.push({ label, nchars, limit, ok });
+    } else {
+      children.push(new Paragraph({ text: '', spacing: { after: 120 } }));
+    }
+    continue;
   }
   if (l.startsWith('|')) {
     // collect table
@@ -111,4 +136,4 @@ const doc = new Document({
     children
   }]
 });
-Packer.toBuffer(doc).then(buf => { fs.writeFileSync(out, buf); console.log('wrote', out, buf.length, 'bytes; tables:', tableIdx, 'blocks:', children.length); });
+Packer.toBuffer(doc).then(buf => { fs.writeFileSync(out, buf); console.log('wrote', out, buf.length, 'bytes; tables:', tableIdx, 'blocks:', children.length); counts.forEach(c => console.log((c.ok ? '  ok  ' : '  OVER') + ' ' + c.label + ' ' + c.nchars + '/' + c.limit)); });
