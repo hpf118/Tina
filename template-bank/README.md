@@ -75,6 +75,17 @@ source material in, an accessible, traceable foundational-teaching deck out:
   multi-agent pipeline (Option 2: Orchestrator → Objectives Analyst → Synthesizer → Slide
   Architect → Accessibility QA), plus the operator SOP for building the .pptx via Copilot in
   PowerPoint on the organizational template.
+- [`prompts/vr-storyboard-one-shot-prompt.md`](prompts/vr-storyboard-one-shot-prompt.md) — the same
+  CRAFT approach for **VR training storyboards**: official manual + training plan + video action log
+  in, a developer-ready Storyboard Build Document out. Five modes match the VR Storyboard Workflow
+  (`FRAMEWORK` for EDS2 → Gate 1, `PILOT` and `DETAIL` for EDS1 → Gates 2–3, `QC`, `FULL`), with
+  M/T/V/B source IDs, row rules, critical-step tests, ten fixed columns, global systems G1–G8,
+  parameters, assets, voice script and decision log.
+- [`prompts/vr-storyboard-copilot-agent.md`](prompts/vr-storyboard-copilot-agent.md) — the VR
+  storyboard pipeline in Microsoft Copilot: a single Agent Builder agent (instructions under the
+  8,000-character limit, five modes) and a Copilot Studio multi-agent pipeline (Orchestrator →
+  Source Analyst → Framework Architect → Row Writer → Systems & Build Data → QC Reviewer), plus the
+  operator SOP mapped to EDS2 / EDS1 / Lead / QC / Dev team lead.
 
 ## Rebuilding the deck
 
