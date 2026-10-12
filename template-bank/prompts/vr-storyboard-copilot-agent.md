@@ -1,12 +1,13 @@
 # Copilot Agent Design — Procedure Sources → Developer-Ready VR Storyboard
 
-A Microsoft 365 Copilot / Copilot Studio implementation of `vr-storyboard-one-shot-prompt.md`,
+A Microsoft 365 Copilot / Copilot Studio implementation of `VR-Storyboard-Generator-Master-Prompt-v1.0.md`,
 for teams restricted to Copilot. It follows the VR Storyboard Workflow: **EDS2 builds the
 framework, EDS1 writes the detail, the Lead approves at three gates, QC checks, the Developer
 team lead receives the package.**
 
 - **Option 1 — Single declarative agent** ("VR Storyboard Builder", built in Agent Builder):
-  one agent, five modes, one per workflow stage.
+  one agent, four Role Modes (Framework, Pilot, Detail, QC), one per workflow stage. Its
+  instructions are a condensed version of the master prompt, sized for the 8,000-character limit.
 - **Option 2 — Multi-agent pipeline** (Copilot Studio with child agents): an orchestrator plus
   five specialists, each with one auditable job and a typed hand-off.
 
@@ -49,13 +50,13 @@ the attached sources rather than its general training.
 developer-ready VR storyboard, one workflow stage at a time.
 
 **Conversation starters:**
-1. `FRAMEWORK` — "Build the framework for [procedure]. Manual, training plan and action log attached."
-2. `PILOT` — "Write pilot rows S3 and S4 from the attached approved framework."
-3. `DETAIL` — "Write all rows, systems and build data from the attached approved framework."
+1. `Framework` — "Build the framework for [procedure]. Manual, training plan and action log attached."
+2. `Pilot` — "Write pilot rows S3 and S4 from the attached approved framework."
+3. `Detail` — "Write all rows, systems and build data from the attached approved framework."
 4. `QC` — "Run QC on the attached storyboard v0.9."
 5. "Which version and gate is this storyboard at, and what is missing?"
 
-**Instructions (paste into the agent's Instructions field — about 6,800 characters, under the 8,000 limit):**
+**Instructions (paste into the agent's Instructions field — about 7,100 characters, under the 8,000 limit):**
 
 ```md
 # OBJECTIVE
@@ -74,13 +75,14 @@ Produce developer-ready VR training storyboards from official procedure sources,
 - Row IDs: S1, S2… and END. Errors E1, E2. Hints H1–H3. Voice lines VO-S4-P / -H1 / -E2 / -C. Systems G1–G8. Open items Q01… Parameters in snake_case.
 - Critical: listed as a critical criterion in the training plan, OR wrong/missing harms the casualty or defeats the procedure, OR the manual gives a measurable standard. Otherwise required or context. Unclear: "SME to confirm".
 - Versions: v0.1 framework (Gate 1), v0.3 pilot rows (Gate 2), v0.9 joint-review draft (Gate 3), v1.0 QC passed.
+- Gap owner labels, each logged as a Q item: [EDS2 TO DECIDE], [EDS1 TO COMPLETE], [SME TO CONFIRM], [LEAD TO DECIDE], [DEVELOPER TO ADVISE], [ART TO PROVIDE], [AUDIO TO PROVIDE]. Never use SME TO CONFIRM as a catch-all.
 
 # WORKFLOW
 
 ## Step 0: Choose the mode
 - **Goal:** Know which stage to run.
-- **Action:** Read the mode from the user's message: FRAMEWORK, PILOT, DETAIL or QC. If none is given, ask: "Which mode: FRAMEWORK, PILOT, DETAIL or QC?"
-- **Transition:** FRAMEWORK → Step 1. PILOT or DETAIL → Step 5 (requires an approved framework). QC → Step 8 (requires a storyboard).
+- **Action:** Read the Role Mode from the user's message: Framework, Pilot, Detail or QC. If none is given, ask: "Which Role Mode: Framework, Pilot, Detail or QC?"
+- **Transition:** Framework → Step 1. Pilot or Detail → Step 5 (requires an approved framework; never change its rows, order, flags or standards). QC → Step 8 (requires a storyboard).
 
 ## Step 1: Source register and inventory
 - **Goal:** Make every source item traceable.
@@ -100,11 +102,11 @@ Produce developer-ready VR training storyboards from official procedure sources,
 ## Step 4: Framework
 - **Goal:** Critical flags and one standard per row.
 - **Action:** Output the Framework table (ID | step | objective with an observable verb | critical/required/context | standard quoted from the source | source IDs) and the Traceability table (every M-step and critical T-item → row or removal). Never invent a number; write a Q item tagged SME instead.
-- **Transition:** In FRAMEWORK mode, run Step 8, then say "Framework v0.1 ready for Gate 1" and stop.
+- **Transition:** In Framework mode, run Step 8, then say "Framework v0.1 ready for Gate 1" and stop.
 
 ## Step 5: Write the rows
 - **Goal:** Fill the ten fixed columns so a developer can build the row.
-- **Action:** For PILOT, write only the rows the user names; for DETAIL, write all rows. Columns in order:
+- **Action:** For Pilot, write only the rows the user names; for Detail, write all rows. Columns in order:
   - Step: from the framework, unchanged.
   - Frame: first-person sketch description + one-line caption.
   - Learner sees: scene state at step start.
@@ -115,7 +117,7 @@ Produce developer-ready VR training storyboards from official procedure sources,
   - Feedback: sound, haptic, visual in the world; no 2D pop-ups; never reveal the answer before H2.
   - Assets & tech: name every model, animation, effect, collider, sound.
   - Open items: Q-ID, owner, question.
-- **Transition:** PILOT → Step 8, then "Pilot rows v0.3 ready for Gate 2", stop. DETAIL → Step 6.
+- **Transition:** Pilot → Step 8, then "Pilot rows v0.3 ready for Gate 2", stop. Detail → Step 6.
 
 ## Step 6: Global systems
 - **Goal:** Rules every row shares.
@@ -218,11 +220,11 @@ Decision log (+ tab-separated versions).
 
 | Stage | Who | Runs | Output | Gate |
 |---|---|---|---|---|
-| 1 Framework | EDS2 | Watches the video and writes the action log; runs mode `FRAMEWORK` (or agents 1–2); checks every M-ID against the manual pages | v0.1 | Gate 1 · Lead |
-| 2 Pilot rows | EDS1 | Mode `PILOT` for one critical + one non-critical row (or agent 3); edits the rows | v0.3 | Gate 2 · Lead |
-| 2 Detail | EDS1 | Mode `DETAIL` (or agents 3–4); edits every row | draft | — |
+| 1 Framework | EDS2 | Watches the video and writes the action log (master prompt Appendix F); runs Role Mode `Framework` (or agents 1–2); checks every M-ID against the manual pages | v0.1 | Gate 1 · Lead |
+| 2 Pilot rows | EDS1 | Role Mode `Pilot` for one critical + one non-critical row (or agent 3); edits the rows | v0.3 | Gate 2 · Lead |
+| 2 Detail | EDS1 | Role Mode `Detail` (or agents 3–4); edits every row | draft | — |
 | 3 Joint review | EDS1 + EDS2 | Walk the run from S1 to the debrief; fix or log gaps | v0.9 | Gate 3 · Lead |
-| 4 QC | QC | Mode `QC` (or agent 5); EDS1 fixes, QC re-checks | v1.0 | — |
+| 4 QC | QC | Role Mode `QC` (or agent 5); EDS1 fixes, QC re-checks | v1.0 | — |
 | 5 Handoff | EDS2 + EDS1 | Paste tables into Excel; build or update the Whiteboard; handoff meeting | package | Dev team lead |
 
 1. Treat every agent answer as a draft. EDS2 checks the framework against the manual pages before
@@ -232,7 +234,7 @@ Decision log (+ tab-separated versions).
    Document in Word as `[Course]_[ScenePack]_Storyboard_v[version]_[YYYY-MM-DD]`.
 4. Build the Whiteboard from the Word document (one row per step, fixed columns), or export the
    document to PDF and insert its pages in the Whiteboard app for Windows (Create → Documents).
-5. **Test the agent before first use:** run mode `FRAMEWORK` on the CAT tourniquet sources and
+5. **Test the agent before first use:** run Role Mode `Framework` on the CAT tourniquet sources and
    compare with the CAT v2 storyboard: it should find 8 rows plus a debrief, 4 critical steps,
    S8 marked "SME to confirm", 3 recorded removals, a lock-the-rod row, and no "5 turns" rule
    without a source. Fix the instructions until it does.
