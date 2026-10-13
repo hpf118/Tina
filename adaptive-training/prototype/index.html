@@ -1,0 +1,581 @@
+<title>MOD 13 Bloom Ladder</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+  :root{
+    --paper:#F4F5F2; --panel:#FFFFFF; --panel2:#EBEEE9;
+    --ink:#1B2530; --muted:#5C6B7A; --line:#D6DBD4; --line2:#C3CAC1;
+    --accent:#274B72; --accent-ink:#FFFFFF; --accent-soft:#E3EAF2;
+    --gold:#A97F2F; --gold-soft:#F3EAD5;
+    --ok:#2F7D4F; --ok-soft:#E2EFE6; --bad:#AD3A2C; --bad-soft:#F5E4E0;
+    --l0:#8A959E; --l1:#7A9BB8; --l2:#3E6B96; --l3:#A97F2F; --lvl-ink:#FFFFFF;
+    --shadow:0 1px 3px rgba(27,37,48,.08);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#12181F; --panel:#1A222B; --panel2:#141B23;
+      --ink:#E8ECEF; --muted:#93A1AE; --line:#2A3641; --line2:#37444F;
+      --accent:#7FA6CE; --accent-ink:#0F1720; --accent-soft:#22303F;
+      --gold:#D2A756; --gold-soft:#33291A;
+      --ok:#5CAE7F; --ok-soft:#1C2E24; --bad:#D2705F; --bad-soft:#33201C;
+      --l0:#6B7680; --l1:#5E7E9C; --l2:#7FA6CE; --l3:#D2A756; --lvl-ink:#0F1720;
+      --shadow:0 1px 3px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#12181F; --panel:#1A222B; --panel2:#141B23;
+    --ink:#E8ECEF; --muted:#93A1AE; --line:#2A3641; --line2:#37444F;
+    --accent:#7FA6CE; --accent-ink:#0F1720; --accent-soft:#22303F;
+    --gold:#D2A756; --gold-soft:#33291A;
+    --ok:#5CAE7F; --ok-soft:#1C2E24; --bad:#D2705F; --bad-soft:#33201C;
+    --l0:#6B7680; --l1:#5E7E9C; --l2:#7FA6CE; --l3:#D2A756; --lvl-ink:#0F1720;
+    --shadow:0 1px 3px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{background:var(--paper); color:var(--ink); font:16px/1.55 "Public Sans",system-ui,Segoe UI,Roboto,sans-serif; margin:0; min-height:100vh}
+  .disp{font-family:"Saira Semi Condensed","Public Sans",system-ui,sans-serif}
+  code,.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.85em}
+  button{font:inherit; cursor:pointer}
+  button:focus-visible,a:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  @media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
+
+  header.app{background:var(--panel); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:5}
+  .bar{max-width:960px; margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+  .crest{background:var(--accent); color:var(--accent-ink); font-family:"Saira Semi Condensed",sans-serif; font-weight:700; letter-spacing:.06em; padding:4px 10px; font-size:.8rem}
+  .bar h1{font-family:"Saira Semi Condensed",sans-serif; font-weight:600; font-size:1.02rem; margin:0; letter-spacing:.01em}
+  .bar .sub{color:var(--muted); font-size:.78rem; margin-top:-2px}
+  .bar .grow{flex:1}
+  .viewtog{display:flex; border:1px solid var(--line2); overflow:hidden}
+  .viewtog button{background:var(--panel); color:var(--muted); border:0; padding:6px 12px; font-family:"Saira Semi Condensed",sans-serif; font-weight:600; font-size:.82rem; letter-spacing:.05em; text-transform:uppercase}
+  .viewtog button[aria-pressed="true"]{background:var(--accent); color:var(--accent-ink)}
+  .ghost{background:none; border:1px solid var(--line2); color:var(--muted); padding:6px 12px; font-size:.82rem}
+  .ghost:hover{border-color:var(--accent); color:var(--accent)}
+
+  nav.steps{max-width:960px; margin:0 auto; padding:12px 20px 0; display:flex; gap:4px; flex-wrap:wrap}
+  .step{font-family:"Saira Semi Condensed",sans-serif; font-weight:600; font-size:.78rem; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); border:0; background:none; border-bottom:3px solid var(--line); padding:4px 10px 6px}
+  .step.done{color:var(--ink); border-color:var(--l1)}
+  .step.now{color:var(--accent); border-color:var(--accent)}
+  .step:disabled{cursor:default}
+
+  main{max-width:960px; margin:0 auto; padding:22px 20px 80px}
+  .card{background:var(--panel); border:1px solid var(--line); box-shadow:var(--shadow); padding:22px 26px; margin-bottom:18px}
+  .eyebrow{font-family:"Saira Semi Condensed",sans-serif; font-weight:600; font-size:.75rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 6px}
+  h2.disp{font-size:1.5rem; font-weight:600; margin:.1em 0 .45em; text-wrap:balance}
+  h3.disp{font-size:1.08rem; font-weight:600; margin:1.1em 0 .4em}
+  p{max-width:64ch}
+  p.lede{font-size:1.05rem; max-width:60ch}
+  .muted{color:var(--muted)}
+  .small{font-size:.85rem}
+
+  .scenario{border-left:4px solid var(--accent); background:var(--panel); padding:16px 20px; margin-bottom:16px; box-shadow:var(--shadow)}
+  .scenario p{margin:.35em 0 0; max-width:70ch}
+
+  .qmeta{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .bloom{font-family:"Saira Semi Condensed",sans-serif; font-weight:600; font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); background:var(--accent-soft); padding:2px 8px}
+  .stem{font-size:1.08rem; font-weight:600; max-width:66ch; margin:.3em 0 .9em}
+  .opts{display:flex; flex-direction:column; gap:10px; margin:0; padding:0; list-style:none}
+  .opt{display:block; width:100%; text-align:left; background:var(--panel); border:1px solid var(--line2); padding:12px 14px; line-height:1.45}
+  .opt:hover{border-color:var(--accent)}
+  .opt[aria-pressed="true"]{border-color:var(--accent); background:var(--accent-soft); box-shadow:inset 3px 0 0 var(--accent)}
+  .opt .letter{font-family:"Saira Semi Condensed",sans-serif; font-weight:700; color:var(--muted); margin-right:8px}
+  .opt .anno{display:block; margin-top:6px; font-size:.8rem; border-top:1px dashed var(--line); padding-top:6px}
+  .anno .yes{color:var(--ok); font-weight:600}
+  .anno .tag{color:var(--bad); font-weight:600}
+  .anno .fb{color:var(--muted); font-style:italic}
+
+  .actions{display:flex; align-items:center; gap:14px; margin-top:18px; flex-wrap:wrap}
+  .primary{background:var(--accent); color:var(--accent-ink); border:0; padding:10px 22px; font-family:"Saira Semi Condensed",sans-serif; font-weight:600; letter-spacing:.05em; text-transform:uppercase; font-size:.88rem}
+  .primary:disabled{opacity:.45; cursor:default}
+  .progress{color:var(--muted); font-size:.82rem}
+  .rail{height:4px; background:var(--line); margin:6px 0 20px}
+  .rail i{display:block; height:100%; background:var(--accent)}
+
+  table{border-collapse:collapse; width:100%; font-size:.92rem}
+  th{font-family:"Saira Semi Condensed",sans-serif; font-weight:600; font-size:.76rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-align:left; padding:8px 12px; border-bottom:2px solid var(--line2)}
+  td{padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+  .tablewrap{overflow-x:auto}
+
+  .lvl{display:inline-block; font-family:"Saira Semi Condensed",sans-serif; font-weight:700; font-size:.8rem; letter-spacing:.05em; color:var(--lvl-ink); padding:2px 9px}
+  .lvl.l0{background:var(--l0)} .lvl.l1{background:var(--l1)} .lvl.l2{background:var(--l2)} .lvl.l3{background:var(--l3)}
+  .route{display:inline-block; font-family:"Saira Semi Condensed",sans-serif; font-weight:600; font-size:.78rem; letter-spacing:.08em; border:1px solid var(--line2); padding:2px 9px; color:var(--ink)}
+
+  .profile{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; margin:14px 0}
+  .cell{border:1px solid var(--line); background:var(--panel); padding:14px 16px; box-shadow:var(--shadow)}
+  .cell .so{font-family:"Saira Semi Condensed",sans-serif; font-weight:700; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+  .cell .name{font-size:.86rem; margin:2px 0 10px; min-height:2.4em}
+  .cell .big{display:flex; align-items:center; gap:10px}
+
+  .path{display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin:8px 0 2px}
+  .node{border:1px solid var(--line2); background:var(--panel); padding:5px 10px; font-size:.82rem; white-space:nowrap}
+  .node.skip{opacity:.38; text-decoration:line-through}
+  .node.refut{border-color:var(--bad); color:var(--bad); font-weight:600}
+  .node.test{border-color:var(--accent); color:var(--accent); font-weight:600}
+  .arrow{color:var(--muted); font-size:.8rem}
+
+  .refcard{border:1px solid var(--line); border-left:4px solid var(--bad); background:var(--panel); padding:14px 18px; margin:10px 0}
+  .refcard .mono{color:var(--bad)}
+
+  .ladder3{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0}
+  .rung{border:1px solid var(--line2); background:var(--panel); padding:8px 12px; font-size:.84rem; display:flex; align-items:center; gap:8px}
+  .rung button{border:1px solid var(--line2); background:var(--panel2); color:var(--muted); font-size:.76rem; padding:2px 8px}
+  .rung button[aria-pressed="true"]{background:var(--ok-soft); color:var(--ok); border-color:var(--ok); font-weight:600}
+  .rung button.fail[aria-pressed="true"]{background:var(--bad-soft); color:var(--bad); border-color:var(--bad)}
+
+  .kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:14px; margin:14px 0}
+  .kpi{border:1px solid var(--line); background:var(--panel); padding:14px 16px}
+  .kpi .n{font-family:"Saira Semi Condensed",sans-serif; font-weight:700; font-size:1.7rem; font-variant-numeric:tabular-nums}
+  .kpi .l{color:var(--muted); font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; font-family:"Saira Semi Condensed",sans-serif; font-weight:600}
+
+  .growth td{font-variant-numeric:tabular-nums}
+  .desnote{border:1px dashed var(--line2); background:var(--panel2); color:var(--muted); font-size:.84rem; padding:10px 14px; margin-top:14px}
+  .desnote .mono{color:var(--accent)}
+  body.learner .desonly{display:none}
+  ul.tight{margin:.4em 0; padding-left:1.2em} ul.tight li{margin:.25em 0; max-width:62ch}
+</style>
+
+<header class="app"><div class="bar">
+  <span class="crest">MOD 13</span>
+  <div><h1>DMCPG-5 · Bloom-Ladder Placement</h1><div class="sub">Adaptive IST prototype — v6 · placement → routing → mastery growth</div></div>
+  <div class="grow"></div>
+  <div class="viewtog" role="group" aria-label="View mode">
+    <button id="btnLearner" aria-pressed="true">Learner</button>
+    <button id="btnDesigner" aria-pressed="false">Designer</button>
+  </div>
+  <button class="ghost" id="btnRestart">Restart</button>
+</div></header>
+
+<nav class="steps" id="steps" aria-label="Stages"></nav>
+<main id="main"></main>
+
+<script>
+"use strict";
+/* ---------- content (verbatim from storyboard v5/v6) ---------- */
+const LEVELS = [
+  {n:3, bloom:"Analyze / Evaluate", def:"Judges the best action, sequences the process, resolves a complication", rule:"Q1, Q2 and Q3 all correct"},
+  {n:2, bloom:"Apply", def:"Acts correctly on the rule in a routine case", rule:"Q1 and Q2 correct; Q3 incorrect"},
+  {n:1, bloom:"Remember / Understand", def:"Identifies the concept, trigger or fact in context", rule:"Q1 correct; Q2 incorrect"},
+  {n:0, bloom:"Below threshold", def:"Cannot identify the concept in context", rule:"Q1 incorrect"},
+];
+const ROUTES = {
+  3:{name:"SKIP", entry:"Next scenario block / next section", skips:"Entire section; credited 100%"},
+  2:{name:"POLISH", entry:"Full-problem practice → Section Test", skips:"Teach, worked example, completion practice"},
+  1:{name:"PRACTICE", entry:"Completion practice → full problem → Section Test", skips:"Teach pages and worked example"},
+  0:{name:"FULL", entry:"Teach → worked example → completion → full problem → Section Test", skips:"Nothing"},
+};
+const SOS = [
+  {id:"SO1", block:"A", name:"Annual In-Service Programs",
+   scenario:"You are the BTL Manager. Three files arrive today: MCpl Arsenault, selected for UTPNCM; Pte Béland, selected VOT-T; Lt Cormier, a qualified member under CFRP.",
+   slides:{teach:"1.1", completion:"1.4", full:"1.5"}, ref:"1.R",
+   q3b:{id:"SO1-Q3b", text:"It is late August. A UTPNCM member needs two weeks of military coursing before the academic year resumes, and a newly qualified CFRP member is still shown on the BTL. Which handling is correct for each?", key:"BTL Manager arranges the UTPNCM coursing between academic years; the qualified CFRP member may return to career-manager control."},
+   qs:[
+    {id:"A-Q1", bloom:"Understand", measures:"Identify management arrangement by program",
+     stem:"Which of the three members will be posted to an educational institution or ULO?",
+     opts:[
+      {t:"MCpl Arsenault (UTPNCM)", ok:true},
+      {t:"Pte Béland (VOT-T)", fb:"VOT-T members are posted to the BTL to await training.", tag:"all-wait-on-BTL"},
+      {t:"Lt Cormier (CFRP)", fb:"CFRP members are usually skilled and posted to BTL."},
+      {t:"All three", tag:"all-wait-on-BTL"}]},
+    {id:"A-Q2", bloom:"Apply", measures:"Act on the arrangement in a routine case",
+     stem:"Pte Béland asks who will course-load him while he awaits training. What do you tell him?",
+     opts:[
+      {t:"The BTL Manager course-loads VOT-T members on the BTL", ok:true},
+      {t:"The educational institution", fb:"Applies to UTPNCM/specialist members."},
+      {t:"DMCPG 5-3", fb:"DMCPG 5-3 does not manage members.", tag:"DMCPG-manages"},
+      {t:"His career manager", fb:"Career-manager control applies to qualified CFRP members."}]},
+    {id:"A-Q3", bloom:"Analyze", measures:"Resolve a complication across two arrangements",
+     stem:"It is the break between academic years. MCpl Arsenault's institution says military coursing “is not their responsibility,” and Lt Cormier asks why his file is being handled differently from the other two. Which handling is correct?",
+     opts:[
+      {t:"The BTL Manager arranges Arsenault's military coursing between academic years, and Cormier, being qualified, may return to career-manager control", ok:true},
+      {t:"The institution must arrange the coursing", fb:"Between academic years, coursing is the BTL Manager's."},
+      {t:"All three files are handled identically on the BTL", tag:"all-wait-on-BTL"},
+      {t:"Arsenault transfers to the BTL for the break", fb:"The member remains institution-managed; only coursing is arranged by the BTL Manager."}]},
+  ]},
+  {id:"SO2", block:"B", name:"VOT-U, COT-U and CMOT",
+   scenario:"Three members, one week. Cpl Dion volunteered for a new occupation after completing BMQ and awaits board results. Pte Ellis failed an academic requirement; a PRB was held and a legitimate retention requirement identified. Sgt Fortin received an AR/MEL decision from DMCA with medical employment limitations.",
+   slides:{teach:"2.1", completion:"2.4", full:"2.5"}, ref:"2.R",
+   q3b:{id:"SO2-Q3b", text:"A briefing slide states: “Any compulsory transfer means pay protection under the general transfer meaning.” Evaluate.", key:"Wrong — CBI 204.03 defines compulsory differently for pay protection; check the applicable CBI definition before applying it."},
+   qs:[
+    {id:"B-Q1", bloom:"Understand", measures:"Identify pathway from trigger",
+     stem:"Which pathway applies to Cpl Dion?",
+     opts:[
+      {t:"VOT-U", ok:true},
+      {t:"COT-U", fb:"COT-U is non-voluntary."},
+      {t:"CMOT", fb:"CMOT follows an AR/MEL decision."},
+      {t:"VOT-T", fb:"VOT-T is a selection program, not this volunteer transfer process."}]},
+    {id:"B-Q2", bloom:"Apply", measures:"Apply the remain-on-course rule",
+     stem:"Cpl Dion's supervisor expects the board will select him and proposes removing him from current training now. What is the correct action?",
+     opts:[
+      {t:"Keep Dion on his current course; VOT-U is competitive and selection is not guaranteed", ok:true},
+      {t:"Remove him to prepare for the new occupation", tag:"anticipating-outcome"},
+      {t:"Pause his course until the board reports", tag:"anticipating-outcome"},
+      {t:"Request early posting", tag:"anticipating-outcome"}]},
+    {id:"B-Q3", bloom:"Evaluate", measures:"Distinguish pathways + pay-protection trap",
+     stem:"A staff note describes Ellis and Fortin as “two identical compulsory transfers with the same pay protection.” Evaluate the note.",
+     opts:[
+      {t:"Wrong twice: Ellis is COT-U (retention requirement after a PRB) and Fortin is CMOT (AR/MEL decision) — different triggers and controlling processes — and CBI 204.03 defines compulsory differently for pay protection, so the definition must be checked", ok:true},
+      {t:"Correct: both are compulsory, so identical", tag:"compulsory-is-one-thing"},
+      {t:"Wrong only about pay protection", fb:"The triggers and processes also differ."},
+      {t:"Wrong only about the pathways", fb:"Pay protection also follows the CBI 204.03 definition.", tag:"compulsory-is-one-thing"}]},
+  ]},
+  {id:"SO3", block:"C", name:"CMOT Processing Steps",
+   scenario:"Sgt Fortin's CMOT file. So far: DMCA 3 issued the AR/MEL advisory to the CO and PSO office; the Chain of Command referred Fortin to the PSO; the PSO completed the abbreviated interview and required processing.",
+   slides:{teach:"3.1", completion:"3.3", full:"3.4"}, ref:"3.R",
+   q3b:{id:"SO3-Q3b", text:"Sequence all seven CMOT steps for a new file, naming the responsible organization at each.", key:"advisory (DMCA 3) → CoC referral → PSO interview/processing → PSO sends DND 2790 to DMCA 3 → DMCA 3 reviews/consults DMCPG 5-3 → DMCA 3 decision letter → DMCPG 5-3 COT instruction."},
+   qs:[
+    {id:"C-Q1", bloom:"Remember", measures:"Recall trigger + responsible organization",
+     stem:"Who started this process, and with what?",
+     opts:[
+      {t:"DMCA 3, by issuing the AR/MEL advisory to the CO and PSO office", ok:true},
+      {t:"The CoC, by referring Fortin", fb:"That is step 2, after the trigger."},
+      {t:"The PSO, by opening the interview", fb:"PSO acts on the referral."},
+      {t:"DMCPG 5-3, by issuing an instruction", fb:"DMCPG 5-3 acts at the end of the process.", tag:"authority-sequence"}]},
+    {id:"C-Q2", bloom:"Apply", measures:"Determine next action mid-process",
+     stem:"What happens next with Fortin's file?",
+     opts:[
+      {t:"DMCA 3 issues the decision letter", fb:"The decision letter cannot precede DMCA 3's review of the completed file.", tag:"review-skipped"},
+      {t:"The PSO sends DND 2790 and required documents to DMCA 3", ok:true},
+      {t:"DMCPG 5-3 issues the COT instruction", tag:"authority-sequence"},
+      {t:"The CoC selects the effective date", fb:"The effective date is consulted between DMCA 3 and DMCPG 5-3."}]},
+    {id:"C-Q3", bloom:"Analyze · Sequence", measures:"Sequence the closing stages", fixed:true,
+     stem:"DMCA 3 has now received the file. Place the remaining steps in order: [DMCA 3 issues decision letter] · [DMCPG 5-3 issues COT instruction] · [DMCA 3 reviews and consults DMCPG 5-3 on effective date]",
+     opts:[
+      {t:"Reviews/consults → decision letter → COT instruction", ok:true},
+      {t:"Reviews/consults → COT instruction → decision letter", tag:"authority-sequence"},
+      {t:"Decision letter → reviews/consults → COT instruction", tag:"review-skipped"}]},
+  ]},
+  {id:"SO4", block:"D", name:"Protect the Process",
+   scenario:"Back to Cpl Dion (VOT-U pending). His supervisor has told the orderly room “it's basically approved.” Days later an OT message arrives naming a gaining unit and a losing unit; your (losing) unit reads and actions its part.",
+   slides:{teach:"4.1", completion:"4.3", full:"4.4"}, ref:"4.R",
+   q3b:{id:"SO4-Q3b", text:"A CT message was actioned at the losing unit only, and the member asks to pause the course based on the expected transfer. Judge the situation and pick the complete correct handling.", key:"Keep the member on course until direction is issued AND ensure the gaining unit reads and actions the CT message — both required."},
+   qs:[
+    {id:"D-Q1", bloom:"Understand", measures:"Recognize the issue in context",
+     stem:"The supervisor proposes withdrawing Dion from his current course today. Which avoidable issue is this?",
+     opts:[
+      {t:"Withdrawing a member before an authorized decision", ok:true},
+      {t:"Failing to action a transfer message", fb:"No message exists yet at this point."},
+      {t:"Applying routine handling to a special case", fb:"The issue here is timing, not case type."},
+      {t:"It is not an issue", tag:"informal-is-enough"}]},
+    {id:"D-Q2", bloom:"Apply", measures:"Apply the protect-the-process rule",
+     stem:"What is the best action for Dion's course right now?",
+     opts:[
+      {t:"Keep him on the current course while awaiting the authorized decision", ok:true},
+      {t:"Withdraw and begin preparation", tag:"anticipating-outcome"},
+      {t:"Request a BTL posting before the board meets", tag:"anticipating-outcome"},
+      {t:"Pause the course on the supervisor's confirmation", tag:"informal-is-enough"}]},
+    {id:"D-Q3", bloom:"Evaluate", measures:"Judge completeness of message actions",
+     stem:"Regarding the OT message: your unit has actioned its part; the gaining unit has not seen the message. Evaluate the state of the transfer actions.",
+     opts:[
+      {t:"Incomplete — both gaining and losing units must read and action the message; confirm the gaining unit does so", ok:true},
+      {t:"Complete — the losing unit actioned its part", tag:"half-message"},
+      {t:"The member should relay it", fb:"Message actions are unit responsibilities."},
+      {t:"Wait for a further instruction", fb:"The OT message already contains the required actions.", tag:"half-message"}]},
+  ]},
+];
+const REFUTATIONS = {
+  "all-wait-on-BTL":"Not every selected or transferring member waits on the BTL — UTPNCM members are institution-managed and qualified CFRP members may return to career-manager control.",
+  "DMCPG-manages":"DMCPG 5-3 issues instructions; it does not manage members directly.",
+  "anticipating-outcome":"Never act on an expected decision. Members remain on their current course until an authorized decision is issued.",
+  "compulsory-is-one-thing":"Compulsory transfers are not one thing: COT-U and CMOT have different triggers and controlling processes, and CBI 204.03 defines compulsory differently for pay protection.",
+  "authority-sequence":"DMCA 3 decides; DMCPG 5-3 instructs last. The COT instruction never precedes the decision letter.",
+  "review-skipped":"The decision letter cannot precede DMCA 3's review of the completed file and the effective-date consultation.",
+  "informal-is-enough":"A supervisor's word is not an authorized decision. Only issued direction changes a member's employment or training.",
+  "half-message":"An OT/CT message is complete only when both gaining and losing units have read and actioned it.",
+};
+/* illustrative minutes per skipped v4 component, per SO: teach 6, worked 4, completion 4, full 4 */
+const MIN = {teach:6, worked:4, completion:4, full:4};
+
+/* ---------- state ---------- */
+const STAGES = ["Brief","Block A","Block B","Block C","Block D","Routing","Path","Exit test","Report"];
+let S;
+function freshState(){
+  return {
+    stage:0, maxStage:0, designer:false,
+    qIndex:0,             // 0..2 within a block
+    answers:{},           // qid -> option index (in original order)
+    picked:null,          // currently selected option original-index
+    order:{},             // qid -> shuffled index array
+    tags:{},              // soId -> Set of tags fired
+    levels:{},            // soId -> 0..3
+    exit:{},              // soId -> [bool,bool,bool] simulated post-test ladder
+  };
+}
+function shuffled(n){ const a=[...Array(n).keys()]; for(let i=n-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+function orderFor(q){ if(!S.order[q.id]) S.order[q.id] = q.fixed ? [...Array(q.opts.length).keys()] : shuffled(q.opts.length); return S.order[q.id]; }
+function computeLevel(so){
+  let lvl=0;
+  for(const q of so.qs){ const a=S.answers[q.id]; if(a!=null && q.opts[a].ok) lvl++; else break; }  // consecutive-pass; anomaly auto-handled (first failure caps level)
+  return lvl;
+}
+function collectTags(so){
+  const t=new Set();
+  for(const q of so.qs){ const a=S.answers[q.id]; if(a!=null){ const tag=q.opts[a].tag; if(tag) t.add(tag);} }
+  return t;
+}
+function exitLevel(soId){ const e=S.exit[soId]; if(!e) return 3; let l=0; for(const ok of e){ if(ok) l++; else break;} return l; }
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ---------- rendering ---------- */
+const main=document.getElementById("main"), stepsEl=document.getElementById("steps");
+function lvlChip(n){ return `<span class="lvl l${n}">L${n}</span>`; }
+function renderSteps(){
+  stepsEl.innerHTML = STAGES.map((s,i)=>{
+    const cls = i===S.stage ? "step now" : (i<=S.maxStage ? "step done":"step");
+    return `<button class="${cls}" data-go="${i}" ${i>S.maxStage?"disabled":""}>${s}</button>`;
+  }).join("");
+}
+function go(i){ S.stage=i; S.maxStage=Math.max(S.maxStage,i); S.qIndex=0; S.picked=null; render(); window.scrollTo({top:0}); }
+
+function render(){
+  document.body.classList.toggle("learner", !S.designer);
+  document.getElementById("btnLearner").setAttribute("aria-pressed", String(!S.designer));
+  document.getElementById("btnDesigner").setAttribute("aria-pressed", String(S.designer));
+  renderSteps();
+  const st=S.stage;
+  if(st===0) renderBrief();
+  else if(st>=1 && st<=4) renderBlock(SOS[st-1]);
+  else if(st===5) renderRouting();
+  else if(st===6) renderPath();
+  else if(st===7) renderExit();
+  else renderReport();
+}
+
+function renderBrief(){
+  main.innerHTML = `
+  <div class="card">
+    <p class="eyebrow">After slide 0.3 · Placement module M-P</p>
+    <h2 class="disp">Before we teach you anything — show us what you already know</h2>
+    <p class="lede">Four short scenarios from the BTL Manager's desk, three questions each. About 6–8 minutes. There is one attempt per question and no feedback until the end — answer from your current knowledge.</p>
+    <p>Your answers place you on a mastery ladder for each of the four sub-objectives. What you already master, the course skips and credits in full; what you partly master gets practice only; what is new gets the full lesson.</p>
+    <div class="actions">
+      <button class="primary" data-go="1">Begin placement</button>
+      <button class="ghost" id="btnDemo">Skip ahead with a demo learner</button>
+    </div>
+    <p class="small muted" style="margin-top:10px">Demo learner reproduces the storyboard's worked example — SO1 L3 · SO2 L1 · SO3 L0 · SO4 L2 — so reviewers can inspect routing and reporting without answering all 12 items.</p>
+  </div>
+  <div class="card desonly">
+    <p class="eyebrow">Designer · The mastery metric</p>
+    <div class="tablewrap"><table>
+      <tr><th>Level</th><th>Bloom band</th><th>Definition</th><th>Operational rule</th></tr>
+      ${LEVELS.map(l=>`<tr><td>${lvlChip(l.n)}</td><td>${l.bloom}</td><td>${l.def}</td><td>${l.rule}</td></tr>`).join("")}
+    </table></div>
+    <p class="small muted" style="margin-top:10px"><strong>Consecutive-pass (Guttman) rule:</strong> a level only counts if every level below it is also passed. <strong>Anomaly rule:</strong> a failed lower rung caps the level regardless of higher answers — the design never over-credits. No self-report enters the score. Results write <span class="mono">v_SO1_L … v_SO4_L</span>.</p>
+    <p class="small muted">Build: scored question-page module (M-P) + variables + conditional navigation, not the native per-module pre-test. Fallback Tier A: native gates with Skip Content if Passed.</p>
+  </div>`;
+  document.getElementById("btnDemo").onclick = runDemo;
+}
+
+function renderBlock(so){
+  const q = so.qs[S.qIndex];
+  const ord = orderFor(q);
+  const qNum = (SOS.indexOf(so))*3 + S.qIndex + 1;
+  main.innerHTML = `
+  <div class="rail"><i style="width:${(qNum-1)/12*100}%"></i></div>
+  <div class="scenario">
+    <p class="eyebrow">Scenario ${so.block} — ${so.id} ${so.name}</p>
+    <p>${esc(so.scenario)}</p>
+  </div>
+  <div class="card">
+    <div class="qmeta">
+      <span class="bloom">${q.bloom}</span>
+      <span class="muted small desonly mono">${q.id} · measures: ${esc(q.measures)}${q.fixed?" · fixed order":""}</span>
+    </div>
+    <p class="stem">${esc(q.stem)}</p>
+    <ul class="opts">
+      ${ord.map((oi,pos)=>{
+        const o=q.opts[oi];
+        const anno = S.designer ? `<span class="anno">${o.ok?`<span class="yes">✓ correct</span>`:""}
+          ${o.tag?`<span class="tag mono">[${o.tag}]</span> `:""}${o.fb?`<span class="fb">“${esc(o.fb)}”</span>`:""}
+          ${!o.ok&&!o.tag&&!o.fb?`<span class="fb">untagged distractor</span>`:""}</span>`:"";
+        return `<li><button class="opt" data-pick="${oi}" aria-pressed="${S.picked===oi}">
+          <span class="letter">${String.fromCharCode(65+pos)}</span>${esc(o.t)}${anno}</button></li>`;
+      }).join("")}
+    </ul>
+    <div class="actions">
+      <button class="primary" id="btnSubmit" ${S.picked==null?"disabled":""}>Lock in answer</button>
+      <span class="progress">Question ${qNum} of 12 · one attempt · no feedback during placement</span>
+    </div>
+  </div>`;
+  main.querySelectorAll("[data-pick]").forEach(b=>b.onclick=()=>{ S.picked=+b.dataset.pick; render(); });
+  document.getElementById("btnSubmit").onclick=()=>{
+    S.answers[q.id]=S.picked; S.picked=null;
+    if(S.qIndex<2){ S.qIndex++; render(); window.scrollTo({top:0}); }
+    else {
+      S.levels[so.id]=computeLevel(so); S.tags[so.id]=collectTags(so);
+      const next=S.stage+1; go(next);
+    }
+  };
+}
+
+function runDemo(){
+  // Storyboard worked example: SO1 L3 · SO2 L1 · SO3 L0 · SO4 L2, with tags fired where the demo learner errs
+  const wrongPick=(q,prefTag)=>{ let i=q.opts.findIndex(o=>!o.ok&&(prefTag?o.tag:o.tag==null)); if(i<0) i=q.opts.findIndex(o=>!o.ok); return i; };
+  const target={SO1:3, SO2:1, SO3:0, SO4:2};
+  for(const so of SOS){
+    so.qs.forEach((q,k)=>{
+      const pass = k < target[so.id];
+      S.answers[q.id] = pass ? q.opts.findIndex(o=>o.ok) : wrongPick(q, k===target[so.id]);
+    });
+    S.levels[so.id]=computeLevel(so); S.tags[so.id]=collectTags(so);
+  }
+  S.maxStage=Math.max(S.maxStage,5); go(5);
+}
+
+function pathNodes(so, lvl){
+  const t=so.slides;
+  const steps=[
+    {label:`${t.teach} Teach`, key:"teach", need:0},
+    {label:`Worked example`, key:"worked", need:0},
+    {label:`${t.completion} Completion practice`, key:"completion", need:1},
+    {label:`${t.full} Full-problem practice`, key:"full", need:2},
+  ];
+  return steps.map(s=>({...s, skipped: lvl>s.need || lvl===3}));
+}
+function timeSaved(){
+  let m=0;
+  for(const so of SOS){ for(const n of pathNodes(so,S.levels[so.id])) if(n.skipped) m+=MIN[n.key]; }
+  return m;
+}
+
+function renderRouting(){
+  main.innerHTML = `
+  <div class="card">
+    <p class="eyebrow">Placement complete · routing</p>
+    <h2 class="disp">Your mastery profile</h2>
+    <div class="profile">
+      ${SOS.map(so=>{
+        const l=S.levels[so.id], r=ROUTES[l];
+        return `<div class="cell"><div class="so">${so.id}</div><div class="name">${so.name}</div>
+          <div class="big">${lvlChip(l)}<span class="route">${r.name}</span></div>
+          <div class="small muted" style="margin-top:8px">${r.entry}</div></div>`;
+      }).join("")}
+    </div>
+    <p class="small muted">Skipped content is credited 100%. Estimated time returned to you: <strong>~${timeSaved()} min</strong> <span class="desonly">(illustrative estimate: teach 6 + worked 4 + completion 4 + full 4 min per SO)</span>.</p>
+    <div class="actions"><button class="primary" data-go="6">See my learning path</button></div>
+  </div>
+  ${renderRefutations()}
+  <div class="card desonly">
+    <p class="eyebrow">Designer · routing map</p>
+    <div class="tablewrap"><table>
+      <tr><th>Level</th><th>Route</th><th>Entry point (v4)</th><th>Skipped</th></tr>
+      ${[3,2,1,0].map(n=>`<tr><td>${lvlChip(n)}</td><td><span class="route">${ROUTES[n].name}</span></td><td>${ROUTES[n].entry}</td><td>${ROUTES[n].skips}</td></tr>`).join("")}
+    </table></div>
+    <div class="desnote">Variables written: ${SOS.map(so=>`<span class="mono">v_${so.id}_L=${S.levels[so.id]}</span>`).join(" · ")}. Refutation cards fire on tagged distractors selected anywhere in the block — not on confidence. Section tests, remediation loop, spiral review and booster unchanged from v4.</div>
+  </div>`;
+}
+function renderRefutations(){
+  const cards=[];
+  for(const so of SOS){
+    if(S.levels[so.id]===3) continue;               // skipped section: no route, no card
+    for(const tag of (S.tags[so.id]||[])){
+      cards.push(`<div class="refcard"><p class="eyebrow">Refutation card ${so.ref} · ${so.id}</p>
+        <p>One of your answers followed a common misconception<span class="desonly"> <span class="mono">[${tag}]</span></span>. <strong>The rule:</strong> ${esc(REFUTATIONS[tag])}</p></div>`);
+    }
+  }
+  if(!cards.length) return "";
+  return `<div class="card"><p class="eyebrow">Before you continue</p>
+    <h3 class="disp" style="margin-top:0">Let's straighten out what tripped you</h3>${cards.join("")}
+    <p class="small muted desonly">Cards open the learner's route because a tagged distractor was selected in the block.</p></div>`;
+}
+
+function renderPath(){
+  main.innerHTML = `
+  <div class="card">
+    <p class="eyebrow">Adaptive route</p>
+    <h2 class="disp">Your course, resized to your profile</h2>
+    ${SOS.map(so=>{
+      const l=S.levels[so.id];
+      const hasRef = l<3 && (S.tags[so.id]||new Set()).size>0;
+      const nodes = pathNodes(so,l);
+      const inner = l===3
+        ? `<span class="node skip">Section skipped — credited 100%</span>`
+        : (hasRef?`<span class="node refut">${so.ref} Refutation</span><span class="arrow">→</span>`:"") +
+          nodes.map(n=>`<span class="node ${n.skipped?"skip":""}">${n.label}</span>`).join(`<span class="arrow">→</span>`) +
+          `<span class="arrow">→</span><span class="node test">Section Test</span>`;
+      return `<h3 class="disp">${so.id} · ${so.name} &nbsp;${lvlChip(l)}</h3><div class="path">${inner}</div>`;
+    }).join("")}
+    <p class="small muted" style="margin-top:14px">Teach, worked-example and practice pages are the v4 slides, unchanged; struck-through pages are skipped by this profile.</p>
+    <div class="actions"><button class="primary" data-go="7">Continue to section tests</button></div>
+  </div>`;
+}
+
+function renderExit(){
+  for(const so of SOS){ if(S.levels[so.id]<3 && !S.exit[so.id]) S.exit[so.id]=[true,true,true]; }
+  const active=SOS.filter(so=>S.levels[so.id]<3);
+  main.innerHTML = `
+  <div class="card">
+    <p class="eyebrow">Section tests · post-test ladder</p>
+    <h2 class="disp">Exit on the same ladder you entered</h2>
+    <p>Each section test is a three-question ladder: the v4 items <span class="mono">SOn-T1b</span> (Q1 level) and <span class="mono">SOn-T2b</span> (Q2 level), plus one new Q3-level item shown below. Exit level uses the same consecutive-pass rule. <strong>Pass standard: exit level ≥ L2; L3 recommended for SO3 and SO4.</strong></p>
+    <p class="small muted">Prototype note: v4 form-b items are not restated here — flip each rung to see how exit level, the completion gate and the report respond.</p>
+    ${active.length? active.map(so=>{
+      const e=S.exit[so.id], xl=exitLevel(so.id);
+      const need = (so.id==="SO3"||so.id==="SO4") ? "≥ L2 · L3 recommended" : "≥ L2";
+      const gate = xl>=2;
+      return `<h3 class="disp">${so.id} · ${so.name}</h3>
+      <div class="ladder3">
+        ${["Q1 · "+so.id+"-T1b (v4)","Q2 · "+so.id+"-T2b (v4)","Q3 · "+so.q3b.id].map((lab,k)=>`
+          <span class="rung"><span class="mono">${lab}</span>
+            <button data-so="${so.id}" data-k="${k}" data-v="1" aria-pressed="${e[k]}">correct</button>
+            <button class="fail" data-so="${so.id}" data-k="${k}" data-v="0" aria-pressed="${!e[k]}">missed</button>
+          </span>`).join("")}
+      </div>
+      <p class="small" style="max-width:72ch"><strong>${so.q3b.id}:</strong> ${esc(so.q3b.text)} <span class="desonly muted">✓ ${esc(so.q3b.key)}</span></p>
+      <p class="small">Exit ${lvlChip(xl)} <span class="muted">gate ${need} — ${gate?`<strong style="color:var(--ok)">met</strong>`:`<strong style="color:var(--bad)">not met · remediation loop</strong>`}</span></p>`;
+    }).join("") : `<p><em>All four sections were placed at L3 — nothing to test; the course is credited in full.</em></p>`}
+    <div class="actions"><button class="primary" data-go="8">See the report</button></div>
+  </div>`;
+  main.querySelectorAll("[data-so]").forEach(b=>b.onclick=()=>{
+    S.exit[b.dataset.so][+b.dataset.k] = b.dataset.v==="1"; render();
+  });
+}
+
+function renderReport(){
+  const rows=SOS.map(so=>{
+    const p=S.levels[so.id], skip=p===3, x=skip?3:exitLevel(so.id);
+    return {so, p, x, skip};
+  });
+  const score=Math.round(rows.reduce((a,r)=>a+r.x/3,0)/4*100);
+  const tagList=[]; for(const so of SOS) for(const t of (S.tags[so.id]||[])) tagList.push({t, so:so.id});
+  main.innerHTML = `
+  <div class="card">
+    <p class="eyebrow">Reporting · learner profile</p>
+    <h2 class="disp">Placement → exit, one ladder</h2>
+    <div class="kpis">
+      <div class="kpi"><div class="n">${score}%</div><div class="l">SCORM course score</div></div>
+      <div class="kpi"><div class="n">~${timeSaved()} min</div><div class="l">Content skipped</div></div>
+      <div class="kpi"><div class="n">${rows.filter(r=>r.x>r.p&&!r.skip).length}</div><div class="l">SOs grown</div></div>
+      <div class="kpi"><div class="n">${tagList.length}</div><div class="l">Misconceptions flagged</div></div>
+    </div>
+    <div class="tablewrap"><table class="growth">
+      <tr><th>Sub-objective</th><th>Placement</th><th>Exit</th><th>Outcome</th></tr>
+      ${rows.map(r=>`<tr><td><strong>${r.so.id}</strong> ${r.so.name}</td>
+        <td>${lvlChip(r.p)}</td>
+        <td>${r.skip?`<span class="muted">skip</span>`:lvlChip(r.x)}</td>
+        <td>${r.skip?"Credited L3 (placed out)":(r.x>=2?`L${r.p} → L${r.x} · gate met`:`L${r.p} → L${r.x} · <span style="color:var(--bad)">remediation</span>`)}</td></tr>`).join("")}
+    </table></div>
+    <p class="small muted" style="margin-top:10px">Course score for SCORM = mean of section-test ladders (L/3 per SO); skipped SOs credited L3.</p>
+  </div>
+  <div class="card desonly">
+    <p class="eyebrow">Designer · cohort &amp; QA</p>
+    <h3 class="disp" style="margin-top:0">What xAPI aggregates across learners</h3>
+    <ul class="tight">
+      <li><strong>Placement distribution per SO</strong> — topics the audience already owns are candidates for pruning.</li>
+      <li><strong>Misconception-tag frequency</strong> — this run fired: ${tagList.length?tagList.map(x=>`<span class="mono">[${x.t}]</span> (${x.so})`).join(", "):"none"}. High-frequency tags are candidates for stronger refutation content.</li>
+      <li><strong>Ladder QA after Alpha</strong> — pass rates must decrease monotonically Q1 ≥ Q2 ≥ Q3 within each scenario; any inversion means a mis-levelled item to rewrite.</li>
+    </ul>
+    <div class="desnote">Change control vs v4 — removed: confidence taps, correctness × confidence matrix, <span class="mono">v_*conf</span>. Replaced: gates 1.G–4.G → placement module M-P; routing table replaces v4 Routing Rules. Retriggered: refutation cards fire on tagged distractors. Extended: section tests gain one Q3-level item each; exit standard ≥ L2 (L3 for SO3/SO4). Unchanged: all teach, worked-example, practice and close slides; item bank forms b/c; spiral review; booster.</div>
+  </div>
+  <div class="card">
+    <div class="actions"><button class="ghost" id="btnAgain">Run another learner</button></div>
+  </div>`;
+  document.getElementById("btnAgain").onclick=()=>{ S=freshState(); render(); };
+}
+
+/* ---------- wiring ---------- */
+document.addEventListener("click",e=>{
+  const g=e.target.closest("[data-go]"); if(g && !g.disabled){ go(+g.dataset.go); }
+});
+document.getElementById("btnLearner").onclick=()=>{ S.designer=false; render(); };
+document.getElementById("btnDesigner").onclick=()=>{ S.designer=true; render(); };
+document.getElementById("btnRestart").onclick=()=>{ S=freshState(); render(); };
+S=freshState(); render();
+</script>
