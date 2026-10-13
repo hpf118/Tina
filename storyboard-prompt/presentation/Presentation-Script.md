@@ -1,0 +1,81 @@
+# Transforming Learning Design at Scale: presentation script
+
+Team-based, practitioner-governed AI storyboarding tool. LSC Learning Engineering Team.
+
+Twelve slides, about 1,500 words, planned for 10 minutes 25 seconds at a measured pace. Slides 1 to 4 are unchanged from the earlier deck; slides 5 to 12 are new. The same text is in the speaker notes of each slide.
+
+## Timing plan
+
+| Slide | Title | Time |
+|---|---|---|
+| 1 | Transforming Learning Design at Scale | 30 s |
+| 2 | TPACK: the three kinds of knowledge | 45 s |
+| 3 | AI Storyboarding Project Prompt Development | 45 s |
+| 4 | How Educator Knowledge Is Embedded in the Prompt | 40 s |
+| 5 | From TPACK to a working tool | 55 s |
+| 6 | The CRAFT prompt in one view | 55 s |
+| 7 | One standard, six kinds of expertise | 65 s |
+| 8 | Three ways the team uses it | 60 s |
+| 9 | Quality is governed by the people who review | 65 s |
+| 10 | Where it still falls short | 55 s |
+| 11 | The platform, not the prompt, is now the limit | 65 s |
+| 12 | Where we would welcome your expertise | 45 s |
+| | Total | 10 min 25 s |
+
+## Script
+
+### Slide 1. Transforming Learning Design at Scale  (30 s)
+
+Good morning, and thank you for visiting the Learning Support Centre. In the next ten minutes I will show you one project from the Learning Engineering Team: a team-based, practitioner-governed AI storyboarding tool. The word order matters: the team and the practitioners come first, and the AI is the tool. I will cover how it was built, what it does for the team, where it still falls short, and where we would value your expertise.
+
+### Slide 2. TPACK: the three kinds of knowledge  (45 s)
+
+We interpret the work through TPACK: Technological Pedagogical Content Knowledge. An eLearning course needs three kinds of knowledge at once. Content knowledge comes from the client: manuals, policies, legacy courseware and subject-matter experts. Pedagogical knowledge is what our designers add: measurable objectives, sequencing, guided practice, aligned assessment and meaningful feedback. Technological knowledge is what the platform allows: DominKnow pages and interactions, narration, media, scoring and accessibility. Good design lives in the overlap, inside the context of a specific project. Our question was: can that overlap be written down so that a tool reproduces it every time?
+
+### Slide 3. AI Storyboarding Project Prompt Development  (45 s)
+
+This is how the prompt was developed. We followed a prompt-engineering framework: observe good storyboards, define the task, understand what the model can and cannot do, and synthesize a comprehensive prompt, reviewed each time for risk, gaps and suggestions. Its structure follows CRAFT: Context, Role, Actions, Format and Target audience. The arc along the bottom is the project history: a baseline of AI storyboarding, an analysis of our own design experience, a master prompt, and then project storyboards generated from it. The first drafts had real problems: source conflicts, weak objectives, robotic language. Each problem became a control gate.
+
+### Slide 4. How Educator Knowledge Is Embedded in the Prompt  (40 s)
+
+The result is not a clever sentence; it is educator knowledge, written down: instructional rules and examples, a structured workflow, quality criteria, component specifications, project configuration, and human ownership of every gap. The numbers give the scale: close to nineteen thousand words; thirty-seven quality checks, each with a severity; eighteen component specifications; thirty-six configuration keys; and nine markers that assign every unresolved item to a person. That is the raw material. The rest of this presentation is about what it does for the team.
+
+### Slide 5. From TPACK to a working tool  (55 s)
+
+Here is TPACK as we actually use it. On the left are the three inputs. Content knowledge is the client's sources, ranked by authority, so the prompt never guesses which document wins. Pedagogical knowledge is our practitioners' interpretation: objectives written as job tasks, a teach-show-practise-assess sequence, fixed feedback wording, limits on cognitive load. Technological knowledge is what DominKnow can build and what the AI can reliably do. The master prompt in the centre joins them; it is TPACK written as rules the AI must follow. On the right is what comes out: a storyboard in a locked format with every gap owned, which a developer builds in DominKnow without needing to meet the designer, and a course the learner can learn from.
+
+### Slide 6. The CRAFT prompt in one view  (55 s)
+
+This is the whole prompt on one page. Context tells the AI who will read the storyboard, which sources win when they disagree, and what to do when something is missing: classify it and assign it to a person, never fill it in. Role says the generator drafts and people decide. Action fixes the order of work, starting with objectives as job tasks and a verification gate before any slide is designed. Format locks the document so every storyboard has the same shape. Tone is one writing standard that a learner, a client reviewer and a developer can all read. The band at the bottom makes it a standard rather than a suggestion: values set once, thirty-seven checks on every run, nine gap markers so nothing is invented.
+
+### Slide 7. One standard, six kinds of expertise  (65 s)
+
+This is the slide I most want you to remember. The prompt asks the AI to act as six specialists at once: instructional designer, learning-engineering analyst, assessment designer, accessibility and UX reviewer, source-fidelity reviewer, and storyboard-production architect. Those are the kinds of expertise on our team. Before this, each practitioner had their own storyboard, their own habits, their own idea of complete. Getting six experts to produce the same thing is genuinely hard. The standard did that without flattening anyone: the interpretation still belongs to the designer; the shape, the checks and the language belong to the team. The effects are on the right. A storyboard looks the same whoever ran it. A new colleague is inside the standard on their first project. When someone moves on, their rules stay in the prompt and its change log. And the practitioners govern it: reviewer comments become rules, so the tool follows the team, not the other way round.
+
+### Slide 8. Three ways the team uses it  (60 s)
+
+In daily work it does three jobs. Generate: a designer attaches the intake, the sources and any reviewer comments, and what comes back is Developer Ready, or says exactly why it is not. Standardize: we used to ask people to follow the template, and compliance was uneven, because everyone has a better idea. Now the template is inside the tool; nobody has to remember it, and you would have to work hard to produce something that does not comply. The designer's judgement is still there, in the objectives, the scenarios and the sequencing; only the shape is fixed. Convert: when another unit sends a storyboard or a standard in its own format, we run it through the same prompt and hand the developers the format they can build from, checked by the same rules. Without that, the developers could not accept it.
+
+### Slide 9. Quality is governed by the people who review  (65 s)
+
+How does it get better? Every improvement so far has come from a real reviewer comment on a real storyboard. The loop on the left is the governance model. A reviewer writes a comment. We classify the defect. We write the rule into the one place in the prompt where that topic lives, and add one line to the acceptance checks so the generator tests for it on every run. The next storyboard is checked before anyone sees it. The table shows five real examples. Fragments made it hard to connect meaning; now complete sentences are required. Stages or processes? Now it is one term per thing. What is the actual question stem? Now there is a stem before every activity. A developer wrote, in effect, we don't program this, delete it; now platform behaviour stays out of the rows. Fourteen comments on one storyboard became rules. The point is who decides: the reviewers and the practitioners, not the tool.
+
+### Slide 10. Where it still falls short  (55 s)
+
+I want to be straightforward about the limits, because they are why we are talking to you. First, presentation: the content is right far more often than it is well presented. Mock-ups are now required for complex layouts, but the visual side still needs a designer's eye. Second, human review is not optional and it is not getting smaller. The gap markers make that work visible and assignable; they do not remove it, and we would distrust any tool that claimed to. Third, and this is the one we cannot fix from inside: we have no outside benchmark. Everything you have seen was improved by our own reviewers. We do not know how this compares with the wider field, or what we have simply not thought of. We treat all three as design problems on the change log, not as reasons to stop.
+
+### Slide 11. The platform, not the prompt, is now the limit  (65 s)
+
+The second thing we cannot solve alone is scale. Today the tool is, honestly, a document and a link. The prompt runs in a general-purpose AI chat; each run starts by pasting the standard in. Upload and context limits cap how much of a source set one run can read, which matters when a course draws on several manuals. And there is no shared workspace: versions, usage and results are not tracked. What scale needs is on the right: the prompt, the standards and the reference libraries stored once and versioned, shared across the team and with partner units, with enough capacity for a full source set in one run. We have tried two routes. Azure AI Foundry, where the capacity available to us was too small. And the Copilot agent on our current tier, where the limits mean the standard cannot be stored and shared as an agent. So the question is which platform and which hosting approach let a practitioner-governed prompt run as a shared, governed tool in a Government of Canada environment.
+
+### Slide 12. Where we would welcome your expertise  (45 s)
+
+So here is the ask, and it is a modest one. We are not looking for someone to take the project over; the standard works and the team governs it. We are looking for three things. A benchmark: how this compares with your practice, what is strong, what you would change, what we have not seen. A path to scale: a platform, a person or an approach; any one of the three would move us forward. And an exchange: we will share the standard, the change log and the review method, and we would like to learn how others govern AI in learning design. Thank you. I am happy to take questions or to show a storyboard being generated.
+
+## Handling likely questions
+
+- **Which AI model does it run on?** A general-purpose assistant available in our environment. The standard is model-independent by design: everything that matters is in the prompt, so a change of model is a re-validation, not a rewrite.
+- **Does it replace the instructional designer?** No. The generator drafts, structures, maps and checks; it never decides purpose, accuracy or feasibility. Every unresolved item carries a marker naming the person who decides.
+- **How do you know the output is correct?** Every learner-facing claim traces to an accessible source or becomes an owned gap. Thirty-seven checks run before delivery, and a storyboard is Developer Ready only when every row is.
+- **Can we use it?** The standard, the change log and the review method can be shared. What we cannot share yet is a hosted tool, which is the scaling problem on slide 11.
+- **What would you do with more capacity?** Host the prompt, the standards and the reference libraries once, as a governed agent the whole team and partner units can run, with versions and results tracked.
