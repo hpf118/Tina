@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620" width="1100" height="620" font-family="Carlito, Calibri, 'Liberation Sans', sans-serif">
+  <defs>
+    <marker id="da" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B7699"/>
+    </marker>
+  </defs>
+  <rect width="1100" height="620" fill="#FFFFFF"/>
+
+  <!-- Manager -->
+  <rect x="390" y="16" width="320" height="50" rx="6" fill="#F4F6F9" stroke="#8A9BB3" stroke-width="1.5"/>
+  <text x="550" y="47" fill="#333333" font-size="17" text-anchor="middle">Manager, MILPERSCOM LSC (AS-06)</text>
+  <line x1="550" y1="66" x2="550" y2="100" stroke="#1F3864" stroke-width="2.5"/>
+
+  <!-- Team Lead -->
+  <rect x="390" y="100" width="320" height="60" rx="6" fill="#1F3864"/>
+  <text x="550" y="128" fill="#FFFFFF" font-size="19" font-weight="700" text-anchor="middle">EDS 03 · Team Lead</text>
+  <text x="550" y="150" fill="#FFFFFF" font-size="15" text-anchor="middle">Direction · standards · portfolio</text>
+  <line x1="550" y1="160" x2="550" y2="200" stroke="#1F3864" stroke-width="2.5"/>
+
+  <!-- bus -->
+  <line x1="160" y1="200" x2="930" y2="200" stroke="#1F3864" stroke-width="2.5"/>
+  <line x1="160" y1="200" x2="160" y2="230" stroke="#1F3864" stroke-width="2.5"/>
+  <line x1="410" y1="200" x2="410" y2="230" stroke="#1F3864" stroke-width="2.5"/>
+  <line x1="670" y1="200" x2="670" y2="230" stroke="#1F3864" stroke-width="2.5"/>
+  <line x1="930" y1="200" x2="930" y2="230" stroke="#1F3864" stroke-width="2.5"/>
+
+  <!-- TDO -->
+  <rect x="40" y="230" width="240" height="100" rx="6" fill="#F1E5E5" stroke="#9E3B3B" stroke-width="1.5"/>
+  <text x="160" y="262" fill="#9E3B3B" font-size="18" font-weight="700" text-anchor="middle">TDO · Capt / Lt(N)</text>
+  <text x="160" y="288" fill="#333333" font-size="15" text-anchor="middle">Line manager of the EDS 01s</text>
+  <text x="160" y="310" fill="#333333" font-size="15" text-anchor="middle">When and who</text>
+
+  <!-- EDS 02s -->
+  <rect x="300" y="230" width="220" height="100" rx="6" fill="#E6ECF3" stroke="#5B7699" stroke-width="1.5"/>
+  <text x="410" y="262" fill="#1F3864" font-size="18" font-weight="700" text-anchor="middle">EDS 02-A</text>
+  <text x="410" y="288" fill="#333333" font-size="15" text-anchor="middle">PL1 Digital learning</text>
+  <text x="410" y="308" fill="#333333" font-size="15" text-anchor="middle">ecosystems</text>
+
+  <rect x="560" y="230" width="220" height="100" rx="6" fill="#E6ECF3" stroke="#5B7699" stroke-width="1.5"/>
+  <text x="670" y="262" fill="#1F3864" font-size="18" font-weight="700" text-anchor="middle">EDS 02-B</text>
+  <text x="670" y="288" fill="#333333" font-size="15" text-anchor="middle">PL2 Adaptive and</text>
+  <text x="670" y="308" fill="#333333" font-size="15" text-anchor="middle">AI-enabled learning</text>
+
+  <rect x="820" y="230" width="220" height="100" rx="6" fill="#E6ECF3" stroke="#5B7699" stroke-width="1.5"/>
+  <text x="930" y="262" fill="#1F3864" font-size="18" font-weight="700" text-anchor="middle">EDS 02-C</text>
+  <text x="930" y="288" fill="#333333" font-size="15" text-anchor="middle">PL3 Immersive and</text>
+  <text x="930" y="308" fill="#333333" font-size="15" text-anchor="middle">simulation</text>
+
+  <!-- line from TDO to pool -->
+  <line x1="160" y1="330" x2="160" y2="440" stroke="#1F3864" stroke-width="2.5"/>
+
+  <!-- design authority dashed -->
+  <line x1="410" y1="332" x2="410" y2="436" stroke="#5B7699" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#da)"/>
+  <line x1="670" y1="332" x2="670" y2="436" stroke="#5B7699" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#da)"/>
+  <line x1="930" y1="332" x2="930" y2="436" stroke="#5B7699" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#da)"/>
+  <rect x="440" y="366" width="200" height="44" rx="4" fill="#FFFFFF"/>
+  <text x="540" y="384" fill="#5B7699" font-size="15" font-weight="700" text-anchor="middle">design authority</text>
+  <text x="540" y="403" fill="#5B7699" font-size="14" text-anchor="middle">blueprint · gate reviews · patterns</text>
+
+  <!-- EDS 01 pool -->
+  <rect x="40" y="440" width="1000" height="110" rx="6" fill="#F4F6F9" stroke="#8A9BB3" stroke-width="1.5"/>
+  <text x="70" y="474" fill="#1F3864" font-size="18" font-weight="700">EDS 01 · Instructional Designers × 3</text>
+  <text x="70" y="498" fill="#333333" font-size="15">One shared project pool.</text>
+  <text x="70" y="518" fill="#333333" font-size="15">The TDO assigns the work; the EDS 02</text>
+  <text x="70" y="538" fill="#333333" font-size="15">of the project's line sets the design standard.</text>
+  <rect x="420" y="462" width="180" height="68" rx="6" fill="#8A9BB3"/>
+  <text x="510" y="502" fill="#FFFFFF" font-size="17" font-weight="700" text-anchor="middle">EDS 01</text>
+  <rect x="630" y="462" width="180" height="68" rx="6" fill="#8A9BB3"/>
+  <text x="720" y="502" fill="#FFFFFF" font-size="17" font-weight="700" text-anchor="middle">EDS 01</text>
+  <rect x="840" y="462" width="180" height="68" rx="6" fill="#8A9BB3"/>
+  <text x="930" y="502" fill="#FFFFFF" font-size="17" font-weight="700" text-anchor="middle">EDS 01</text>
+
+  <!-- legend -->
+  <line x1="40" y1="588" x2="90" y2="588" stroke="#1F3864" stroke-width="2.5"/>
+  <text x="100" y="593" fill="#333333" font-size="15">Line management (TOR §5): assignments, priorities, leave, PMAs</text>
+  <line x1="600" y1="588" x2="650" y2="588" stroke="#5B7699" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <text x="660" y="593" fill="#333333" font-size="15">Design authority on projects in each product line</text>
+</svg>
