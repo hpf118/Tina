@@ -9,6 +9,7 @@ design, product line and deliverable. Built from the three TORs (EDS 01, EDS 02,
 | [`LE-Team-Role-Architecture.md`](LE-Team-Role-Architecture.md) | Source text: the model, the levels × products matrix, engagement tiers, RACI and gates, deliverables cascade, two lifecycles, worked examples (adaptive assessment, VR), time mix and measures, TOR housekeeping, 90-day plan, checklists |
 | `LE-Team-Role-Architecture.docx` | The Word version for team discussion (16 pages) |
 | [`diagrams/`](diagrams/) | Figure 1 (three levels of work) and Figure 2 (line vs. design authority) as SVG sources and rendered PNGs |
+| [`infographic/`](infographic/) | The presentable version: an 11-page 16:9 infographic deck for the team and the manager. `LE-Team-Role-Architecture-Infographic.pdf` (project or print), `pages/page-NN.png` (one slide each, drop into PowerPoint), `infographic.html` (source), `render.js` (build) |
 | `build-docx.js`, `render-diagrams.js` | Build scripts |
 
 ## The model in one line
@@ -27,3 +28,7 @@ NODE_PATH=$(npm root -g) node build-docx.js LE-Team-Role-Architecture.md LE-Team
 ```
 
 `<!-- pagebreak -->` on its own line in the Markdown forces a page break in the Word output.
+
+```bash
+cd infographic && NODE_PATH=$(npm root -g) node render.js   # infographic.html -> PDF + pages/*.png
+```
