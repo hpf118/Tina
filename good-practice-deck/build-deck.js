@@ -55,8 +55,8 @@ pres.defineSlideMaster({
   background: { color: NAVY },
   objects: [
     { placeholder: { options: { name: "kicker", type: "body", x: 0.9, y: 1.25, w: 11.5, h: 0.4, fontFace: FONT, fontSize: 14, bold: true, color: STEEL_LT, margin: 0, valign: "top", align: "left" }, text: "" } },
-    { placeholder: { options: { name: "title", type: "title", x: 0.9, y: 1.7, w: 11.5, h: 1.7, fontFace: FONT, fontSize: 44, bold: true, color: WHITE, margin: 0, valign: "top", align: "left" }, text: "" } },
-    { placeholder: { options: { name: "subtitle", type: "body", x: 0.9, y: 3.45, w: 10.8, h: 0.9, fontFace: FONT, fontSize: 20, color: TINT_NAVY, margin: 0, valign: "top", align: "left" }, text: "" } },
+    { placeholder: { options: { name: "title", type: "title", x: 0.9, y: 1.7, w: 11.5, h: 0.95, fontFace: FONT, fontSize: 44, bold: true, color: WHITE, margin: 0, valign: "top", align: "left" }, text: "" } },
+    { placeholder: { options: { name: "subtitle", type: "body", x: 0.9, y: 2.75, w: 10.8, h: 0.9, fontFace: FONT, fontSize: 20, color: TINT_NAVY, margin: 0, valign: "top", align: "left" }, text: "" } },
   ],
 });
 
@@ -74,8 +74,9 @@ pres.defineSlideMaster({
   title: "CONTENT",
   background: { color: WHITE },
   objects: [
-    { placeholder: { options: { name: "kicker", type: "body", x: 0.6, y: 0.4, w: 10, h: 0.32, fontFace: FONT, fontSize: 12, bold: true, color: RED, margin: 0, valign: "top", align: "left" }, text: "" } },
-    { placeholder: { options: { name: "title", type: "title", x: 0.6, y: 0.72, w: 12.13, h: 0.7, fontFace: FONT, fontSize: 32, bold: true, color: NAVY, margin: 0, valign: "top", align: "left" }, text: "" } },
+    { placeholder: { options: { name: "kicker", type: "body", x: 0.6, y: 0.32, w: 10, h: 0.3, fontFace: FONT, fontSize: 12, bold: true, color: RED, margin: 0, valign: "top", align: "left" }, text: "" } },
+    { placeholder: { options: { name: "title", type: "title", x: 0.6, y: 0.6, w: 12.13, h: 0.55, fontFace: FONT, fontSize: 30, bold: true, color: NAVY, margin: 0, valign: "top", align: "left" }, text: "" } },
+    { placeholder: { options: { name: "subtitle", type: "body", x: 0.6, y: 1.15, w: 12.13, h: 0.36, fontFace: FONT, fontSize: 17, color: NAVY_MID, margin: 0, valign: "top", align: "left" }, text: "" } },
     { text: { text: FOOTER, options: { x: 0.6, y: 7.0, w: 8, h: 0.3, fontFace: FONT, fontSize: 10, color: GRAY, margin: 0, valign: "middle" } } },
   ],
   slideNumber: { x: 12.13, y: 7.0, w: 0.6, h: 0.3, fontFace: FONT, fontSize: 10, color: GRAY, align: "right" },
@@ -104,10 +105,11 @@ function chevron(slide, x, y, w, h, color) {
 function label(slide, text, x, y, w, color) {
   T(slide, text, { x, y, w: w || 6, h: 0.3, fontSize: 12, bold: true, color: color || RED, charSpacing: 1 });
 }
-function content(sectionTitle, kicker, title) {
+function content(sectionTitle, kicker, title, subtitle) {
   const s = pres.addSlide({ masterName: "CONTENT", sectionTitle });
   s.addText(kicker, { placeholder: "kicker" });
   s.addText(title, { placeholder: "title" });
+  s.addText(subtitle, { placeholder: "subtitle" });
   return s;
 }
 
@@ -117,9 +119,9 @@ function content(sectionTitle, kicker, title) {
 pres.addSection({ title: "Opening" });
 {
   const s = pres.addSlide({ masterName: "TITLE", sectionTitle: "Opening" });
-  s.addText("E-LEARNING DESIGN AND ASSESSMENT REVIEW", { placeholder: "kicker" });
-  s.addText("Finding, documenting and reusing our good practices", { placeholder: "title" });
-  s.addText("An evidence-based, CFITES-aligned way to make our best design work visible", { placeholder: "subtitle" });
+  s.addText("TEAM BRIEFING  ·  E-LEARNING DESIGN AND ASSESSMENT", { placeholder: "kicker" });
+  s.addText("Good Practice Initiative", { placeholder: "title" });
+  s.addText("Finding, documenting and reusing good practices in our design and assessment work", { placeholder: "subtitle" });
   const steps = [
     ["search-w", "Collect", "through six lenses"],
     ["clipboard-w", "Document", "in one short note"],
@@ -127,10 +129,10 @@ pres.addSection({ title: "Opening" });
   ];
   steps.forEach((st, i) => {
     const x = 0.9 + i * 3.9;
-    iconCircle(s, st[0], STEEL, x, 4.95, 0.85);
-    T(s, st[1], { x: x + 1.05, y: 4.98, w: 2.4, h: 0.4, fontSize: 20, bold: true, color: WHITE });
-    T(s, st[2], { x: x + 1.05, y: 5.4, w: 2.4, h: 0.35, fontSize: 14, color: TINT_NAVY });
-    if (i < 2) chevron(s, x + 3.3, 5.17, 0.3, 0.42, STEEL_LT);
+    iconCircle(s, st[0], STEEL, x, 4.3, 0.85);
+    T(s, st[1], { x: x + 1.05, y: 4.33, w: 2.4, h: 0.4, fontSize: 20, bold: true, color: WHITE });
+    T(s, st[2], { x: x + 1.05, y: 4.75, w: 2.4, h: 0.35, fontSize: 14, color: TINT_NAVY });
+    if (i < 2) chevron(s, x + 3.3, 4.52, 0.3, 0.42, STEEL_LT);
   });
   T(s, "Team briefing  ·  November 2026", { x: 0.9, y: 6.6, w: 6, h: 0.35, fontSize: 14, color: STEEL_LT });
   s.addNotes(
@@ -144,8 +146,7 @@ pres.addSection({ title: "Opening" });
 // 2. THE IDEA IN ONE SLIDE
 // ======================================================================
 {
-  const s = content("Opening", "THE IDEA IN ONE SLIDE", "Find it, back it up, reuse it");
-  T(s, "We already do good work. This initiative makes it visible, explainable and reusable.", { x: 0.6, y: 1.5, w: 12.1, h: 0.45, fontSize: 18, color: INK });
+  const s = content("Opening", "OPENING", "Initiative Overview", "Three steps: collect good practices, document them, and reuse them across the team.");
   const cols = [
     ["search-w", "1  ·  COLLECT", "Look through six lenses", "Use the six domains of our review form during the reviews we already do."],
     ["clipboard-w", "2  ·  DOCUMENT", "Write one short note", "What you saw, why it works (with a source), and how others can reuse it."],
@@ -153,16 +154,16 @@ pres.addSection({ title: "Opening" });
   ];
   cols.forEach((c, i) => {
     const x = 0.6 + i * 4.2;
-    card(s, x, 2.25, 3.6, 3.35, TINT_NAVY);
-    iconCircle(s, c[0], NAVY, x + 0.35, 2.55, 0.9);
-    label(s, c[1], x + 0.35, 3.65, 3.0);
-    T(s, c[2], { x: x + 0.35, y: 3.98, w: 3.0, h: 0.45, fontSize: 20, bold: true, color: NAVY });
-    T(s, c[3], { x: x + 0.35, y: 4.5, w: 2.95, h: 0.95, fontSize: 15 });
-    if (i < 2) chevron(s, x + 3.75, 3.7, 0.3, 0.45);
+    card(s, x, 1.9, 3.6, 3.45, TINT_NAVY);
+    iconCircle(s, c[0], NAVY, x + 0.35, 2.2, 0.9);
+    label(s, c[1], x + 0.35, 3.3, 3.0);
+    T(s, c[2], { x: x + 0.35, y: 3.63, w: 3.0, h: 0.45, fontSize: 20, bold: true, color: NAVY });
+    T(s, c[3], { x: x + 0.35, y: 4.15, w: 2.95, h: 0.95, fontSize: 15 });
+    if (i < 2) chevron(s, x + 3.75, 3.4, 0.3, 0.45);
   });
-  card(s, 0.6, 5.9, 12.0, 0.85, NAVY);
-  iconCircle(s, "medal-w", STEEL, 0.85, 6.0, 0.65);
-  T(s, "The result: a shared, evidence-backed playbook built from our own products.", { x: 1.75, y: 5.9, w: 10.6, h: 0.85, fontSize: 18, bold: true, color: WHITE, valign: "middle" });
+  card(s, 0.6, 5.7, 12.0, 0.85, NAVY);
+  iconCircle(s, "medal-w", STEEL, 0.85, 5.8, 0.65);
+  T(s, "The result: a shared, evidence-backed playbook built from our own products.", { x: 1.75, y: 5.7, w: 10.6, h: 0.85, fontSize: 18, bold: true, color: WHITE, valign: "middle" });
   s.addNotes(
     "Lead with the message: we are not starting from zero. Good practices already exist in our courses; they are just not named, explained or shared.\n\n" +
     "Collect: we use the six domains of the review form as lenses, inside reviews we already run.\n" +
@@ -176,7 +177,7 @@ pres.addSection({ title: "Opening" });
 // 3. WHY THIS MATTERS (before / after)
 // ======================================================================
 {
-  const s = content("Opening", "WHY THIS MATTERS", "Today, our best practices stay invisible");
+  const s = content("Opening", "OPENING", "Current State and Opportunity", "Good practices already exist in our products, but they are rarely named, explained or shared.");
   const today = [
     "Reviews tend to focus on defects, so what works goes unnamed",
     "Strong solutions stay in one person's files",
@@ -218,7 +219,7 @@ pres.addSection({ title: "Opening" });
 // 4. WHAT THIS IS / IS NOT
 // ======================================================================
 {
-  const s = content("Opening", "SETTING EXPECTATIONS", "Peer learning, not a performance audit");
+  const s = content("Opening", "OPENING", "Scope and Expectations", "A strengths-based peer-learning process, not a performance assessment.");
   const is = [
     ["Strengths-based", "We look for what works, and say why."],
     ["Built into reviews", "No new approval gate or extra meeting."],
@@ -258,12 +259,12 @@ pres.addSection({ title: "Opening" });
 // 5. SECTION — PART 1
 // ======================================================================
 const DOMAINS = [
-  { n: 1, icon: "bullseye-w", name: "Performance relevance and learner context", short: "Relevance", q: "Right training, right learners, right setting?", count: 3 },
-  { n: 2, icon: "sitemap-w", name: "Outcomes, content and alignment", short: "Alignment", q: "Clear objectives, right content, one target?", count: 4 },
-  { n: 3, icon: "chalkboard-w", name: "Learning strategy and experience", short: "Strategy", q: "Will the way we teach build the skill?", count: 6 },
-  { n: 4, icon: "clipcheck-w", name: "Assessment, feedback and mastery", short: "Assessment", q: "Can we trust the result?", count: 5 },
-  { n: 5, icon: "layers-w", name: "Multimedia, accessibility and development readiness", short: "Media & access", q: "Usable by every learner, and ready to build?", count: 6 },
-  { n: 6, icon: "sync-w", name: "Quality assurance and continuous improvement", short: "QA", q: "Tested before release, improved after?", count: 5 },
+  { n: 1, icon: "bullseye-w", name: "Performance Relevance and Learner Context", short: "Relevance", q: "Right training, right learners, right setting?", count: 3 },
+  { n: 2, icon: "sitemap-w", name: "Outcomes, Content and Alignment", short: "Alignment", q: "Clear objectives, right content, one target?", count: 4 },
+  { n: 3, icon: "chalkboard-w", name: "Learning Strategy and Experience", short: "Strategy", q: "Will the way we teach build the skill?", count: 6 },
+  { n: 4, icon: "clipcheck-w", name: "Assessment, Feedback and Mastery", short: "Assessment", q: "Can we trust the result?", count: 5 },
+  { n: 5, icon: "layers-w", name: "Multimedia, Accessibility and Development Readiness", short: "Media & access", q: "Usable by every learner, and ready to build?", count: 6 },
+  { n: 6, icon: "sync-w", name: "Quality Assurance and Continuous Improvement", short: "QA", q: "Tested before release, improved after?", count: 5 },
 ];
 
 function section(title, partNo, partTitle, blurb, icons, notes) {
@@ -278,7 +279,7 @@ function section(title, partNo, partTitle, blurb, icons, notes) {
   return s;
 }
 
-section("Part 1: What we look for", 1, "What we look for, and why it matters",
+section("Part 1: What We Look For", 1, "What We Look For and Why",
   "Six lenses from our review form, each backed by learning research, assessment science or CAF policy.",
   DOMAINS.map((d) => d.icon),
   "Part 1 answers two questions: what are we looking for, and why should anyone accept that these are the right things to look for?\n\nThe short answer: six lenses, 29 practices, each with a source we can cite."
@@ -288,7 +289,7 @@ section("Part 1: What we look for", 1, "What we look for, and why it matters",
 // 6. SIX LENSES OVERVIEW
 // ======================================================================
 {
-  const s = content("Part 1: What we look for", "THE FRAMEWORK", "Six lenses, 29 practices, one shared language");
+  const s = content("Part 1: What We Look For", "PART 1  ·  WHAT WE LOOK FOR", "The Six Review Domains", "Six domains and 29 practices give the team a shared vocabulary for good design.");
   DOMAINS.forEach((d, i) => {
     const col = i % 3, row = Math.floor(i / 3);
     const x = 0.6 + col * 4.13, y = 1.65 + row * 2.6;
@@ -314,7 +315,7 @@ section("Part 1: What we look for", 1, "What we look for, and why it matters",
 // 7. BUILT ON CFITES
 // ======================================================================
 {
-  const s = content("Part 1: What we look for", "ALIGNED WITH DOCTRINE", "Not extra work: it is what CFITES already asks");
+  const s = content("Part 1: What We Look For", "PART 1  ·  WHAT WE LOOK FOR", "Alignment with CFITES", "The five CAF IT&E principles map directly to criteria on our review form.");
   const rows = [
     ["Performance Orientation", "Start from the job", ["1.1", "2.1", "3.6", "4.2"]],
     ["Systems Thinking", "Everything connects", ["2.3", "6.3"]],
@@ -352,7 +353,7 @@ section("Part 1: What we look for", 1, "What we look for, and why it matters",
 // 8. EVIDENCE BASE
 // ======================================================================
 {
-  const s = content("Part 1: What we look for", "WHY TRUST THESE 29", "Every practice has a backup we can cite");
+  const s = content("Part 1: What We Look For", "PART 1  ·  WHAT WE LOOK FOR", "Evidence Base", "Each practice is supported by research, CAF policy or a recognized standard.");
   const stats = [
     ["29", "practices, each with a source you can cite in a review note"],
     ["23", "backed by strong or moderate research evidence"],
@@ -396,8 +397,8 @@ const PRACTICES = {
   6: [["6.1", "Specialist review"], ["6.2", "Learner trial and usability"], ["6.3", "Evaluation and transfer readiness"], ["6.4", "Revision and change control"], ["6.5", "Efficiency"]],
 };
 
-function domainFrame(d, title) {
-  const s = content("Part 1: What we look for", "DOMAIN " + d.n + "  ·  " + d.name.toUpperCase(), title);
+function domainFrame(d, subtitle) {
+  const s = content("Part 1: What We Look For", "PART 1  ·  WHAT WE LOOK FOR", "Domain " + d.n + ": " + d.name, subtitle);
   card(s, 0.6, 1.65, 3.95, 5.1, TINT_NAVY);
   iconCircle(s, d.icon, NAVY, 0.85, 1.88, 0.62);
   label(s, "THE PRACTICES", 1.62, 2.06, 2.7);
@@ -435,7 +436,7 @@ function lookFor(s, items) {
 
 // Domain 1
 {
-  const s = domainFrame(DOMAINS[0], "Start from the job, the learner and the setting");
+  const s = domainFrame(DOMAINS[0], "Training answers a validated job requirement and fits the learners and their setting.");
   evidenceCard(s, 4.9, "Training must answer a job requirement",
     "“Validation seeks to determine whether the objectives of IT&E satisfy the job-performance requirement for which the program was initially produced.”",
     "CATO 24-09, para. 4 (National Defence, 2009)");
@@ -453,7 +454,7 @@ function lookFor(s, items) {
 }
 // Domain 2
 {
-  const s = domainFrame(DOMAINS[1], "Line everything up with the objective");
+  const s = domainFrame(DOMAINS[1], "Objectives, content, practice and assessment all aim at the same performance.");
   evidenceCard(s, 4.9, "gains when instruction and assessment match",
     "“When critical features of instructional stimuli match those of assessment, effect sizes routinely reach 1.2 to 3 sigma.”",
     "(Cohen, 1987, p. 16)", { stat: "1.2–3 σ" });
@@ -470,7 +471,7 @@ function lookFor(s, items) {
 }
 // Domain 3
 {
-  const s = domainFrame(DOMAINS[2], "Show them, then make them think and practise");
+  const s = domainFrame(DOMAINS[2], "Learners see good performance, then think, decide and practise with support that fades.");
   evidenceCard(s, 4.9, "Two techniques stand out",
     "“Practice testing and distributed practice received high utility assessments because they benefit learners of different ages and abilities…”",
     "(Dunlosky et al., 2013, p. 5)");
@@ -496,7 +497,7 @@ function lookFor(s, items) {
 }
 // Domain 4
 {
-  const s = domainFrame(DOMAINS[3], "Test the skill, then explain the result");
+  const s = domainFrame(DOMAINS[3], "Assessments measure the intended competence; feedback explains how to improve.");
   card(s, 4.9, 2.0, 3.85, 3.0, WHITE, { line: { color: LINE, width: 1 } });
   T(s, "Explaining why beats marking right or wrong", { x: 5.15, y: 2.2, w: 3.4, h: 0.62, fontSize: 16, bold: true, color: NAVY });
   s.addChart(pres.charts.BAR, [{ name: "Effect size", labels: ["Correct / incorrect", "Correct answer shown", "Explains why"], values: [0.05, 0.32, 0.49] }], {
@@ -521,7 +522,7 @@ function lookFor(s, items) {
 }
 // Domain 5
 {
-  const s = domainFrame(DOMAINS[4], "Every element earns its place, for every learner");
+  const s = domainFrame(DOMAINS[4], "Purposeful media, built-in accessibility, equal English and French quality, and a buildable storyboard.");
   evidenceCard(s, 4.9, "Cut what does not help learning",
     "“People learn more deeply from a multimedia message when extraneous material is excluded rather than included.”",
     "(Mayer, 2014, p. 63)");
@@ -542,7 +543,7 @@ function lookFor(s, items) {
 }
 // Domain 6
 {
-  const s = domainFrame(DOMAINS[5], "Check with experts and learners, then improve");
+  const s = domainFrame(DOMAINS[5], "Specialist review and learner trials before release; evaluation and change control after.");
   evidenceCard(s, 4.9, "of usability problems found by the first five test users",
     "“After the first study with five participants has found 85% of the usability problems…”",
     "(Nielsen, 2000)", { stat: "85%" });
@@ -562,7 +563,7 @@ function lookFor(s, items) {
 // ======================================================================
 // 15. SECTION — PART 2
 // ======================================================================
-section("Part 2: How we document", 2, "How we capture and document good practice",
+section("Part 2: How We Document", 2, "How We Capture and Document",
   "Two routes, the right lens at each review stage, one short note, four quick tests.",
   ["search-w", "route-w", "clipboard-w", "inbox-w"],
   "Part 2 is the operational core: how a good practice gets from a product into our shared bank."
@@ -572,7 +573,7 @@ section("Part 2: How we document", 2, "How we capture and document good practice
 // 16. TWO ROUTES
 // ======================================================================
 {
-  const s = content("Part 2: How we document", "TWO ROUTES", "Two ways to capture good practice");
+  const s = content("Part 2: How We Document", "PART 2  ·  HOW WE DOCUMENT", "Capture Routes", "Practices are captured during peer reviews or documented by the designer who created them.");
   const routes = [
     ["search-w", "ROUTE A  ·  PEER-SPOTTED", "Spot it in a review", "During any scheduled review of a colleague's product", [
       "Review as usual, using the six domains",
@@ -613,7 +614,7 @@ section("Part 2: How we document", 2, "How we capture and document good practice
 // 17. WHEN TO LOOK (stage x domain matrix)
 // ======================================================================
 {
-  const s = content("Part 2: How we document", "WHEN TO LOOK", "Each review stage has its own lenses");
+  const s = content("Part 2: How We Document", "PART 2  ·  HOW WE DOCUMENT", "Review Stages and Domains", "Each review stage focuses on the domains most relevant to the products under review.");
   const P = "●", S = "○";
   const head = ["Review stage", "D1 Relevance", "D2 Alignment", "D3 Strategy", "D4 Assessment", "D5 Media & access", "D6 QA", "What you look at"];
   const body = [
@@ -661,7 +662,7 @@ section("Part 2: How we document", 2, "How we capture and document good practice
 // 18. ANATOMY OF A GOOD NOTE
 // ======================================================================
 {
-  const s = content("Part 2: How we document", "THE NOTE FORMAT", "A good note answers three questions");
+  const s = content("Part 2: How We Document", "PART 2  ·  HOW WE DOCUMENT", "Note Format: What, Why, Reuse", "Each note answers three questions and fits the two note cells of our review form.");
   const parts = [
     ["WHAT", "did you see?", "Specific and observable. Say where: screen, activity or item."],
     ["WHY", "does it work?", "Criterion number, a one-line reason and a source from the quick guide."],
@@ -702,8 +703,7 @@ section("Part 2: How we document", 2, "How we capture and document good practice
 // 19. SPECIFIC BEATS GENERAL
 // ======================================================================
 {
-  const s = content("Part 2: How we document", "WRITING TIP", "Specific beats general");
-  T(s, "Turn vague praise into a note someone else can reuse.", { x: 0.6, y: 1.5, w: 12.1, h: 0.4, fontSize: 18 });
+  const s = content("Part 2: How We Document", "PART 2  ·  HOW WE DOCUMENT", "Writing Effective Notes", "Specific notes name the criterion, the location, the reason and the reusable pattern.");
   const pairs = [
     ["“Nice interactive activities.”",
       [{ text: "3.4 Meaningful participation — ", options: { bold: true, color: NAVY } },
@@ -717,7 +717,7 @@ section("Part 2: How we document", 2, "How we capture and document good practice
        { text: "write option-specific feedback, never just “Try again” (Shute, 2008)." }]],
   ];
   pairs.forEach((p, i) => {
-    const y = 2.2 + i * 2.3;
+    const y = 1.85 + i * 2.4;
     card(s, 0.6, y, 3.9, 2.0, TINT_RED);
     iconCircle(s, "times-w", RED, 0.85, y + 0.25, 0.45, 0.5);
     label(s, "VAGUE", 1.45, y + 0.33, 2.5);
@@ -739,7 +739,7 @@ section("Part 2: How we document", 2, "How we capture and document good practice
 // 20. FOUR TESTS
 // ======================================================================
 {
-  const s = content("Part 2: How we document", "QUALITY BAR", "Four tests before it goes in the bank");
+  const s = content("Part 2: How We Document", "PART 2  ·  HOW WE DOCUMENT", "Quality Criteria for the Bank", "A practice must pass four tests before it is added to the shared bank.");
   const tests = [
     ["zoomin-w", "Observable", "Can you point to it on a screen, in a storyboard or in a test item?"],
     ["sitemap-w", "Linked", "Does it clearly match one of the 29 criteria on our form?"],
@@ -769,7 +769,7 @@ section("Part 2: How we document", 2, "How we capture and document good practice
 // 21. THE BANK
 // ======================================================================
 {
-  const s = content("Part 2: How we document", "WHERE IT GOES", "One bank, so good ideas travel");
+  const s = content("Part 2: How We Document", "PART 2  ·  HOW WE DOCUMENT", "The Good Practice Bank", "One shared record of proven practices, used in huddles, onboarding and templates.");
   card(s, 0.6, 1.65, 6.6, 5.1, WHITE, { line: { color: LINE, width: 1 } });
   label(s, "SAMPLE BANK ENTRY", 0.9, 1.88, 3);
   T(s, "GP-2026-014", { x: 4.6, y: 1.84, w: 2.35, h: 0.35, fontSize: 15, bold: true, color: NAVY, align: "right" });
@@ -812,7 +812,7 @@ section("Part 2: How we document", 2, "How we capture and document good practice
 // ======================================================================
 // 22. SECTION — PART 3
 // ======================================================================
-section("Part 3: Rollout", 3, "How we will make it happen",
+section("Part 3: Implementation", 3, "Implementation Plan",
   "Light roles, a steady rhythm and a pilot we shape together.",
   ["users-w", "calendar-w", "flag-w", "rocket-w"],
   "Part 3 covers who does what, how often, and how we start: small, with a pilot we refine together."
@@ -822,7 +822,7 @@ section("Part 3: Rollout", 3, "How we will make it happen",
 // 23. ROLES & RHYTHM
 // ======================================================================
 {
-  const s = content("Part 3: Rollout", "ROLES AND RHYTHM", "Light roles, steady rhythm");
+  const s = content("Part 3: Implementation", "PART 3  ·  IMPLEMENTATION", "Roles and Rhythm", "Light roles and a regular rhythm keep the effort small and steady.");
   label(s, "ROLES", 0.6, 1.65, 4, NAVY);
   const roles = [
     ["users-w", "Every ID", "Logs practices from reviews and from their own work."],
@@ -859,7 +859,7 @@ section("Part 3: Rollout", 3, "How we will make it happen",
 // 24. PILOT ROADMAP
 // ======================================================================
 {
-  const s = content("Part 3: Rollout", "PILOT ROADMAP", "Start small: an eight-week pilot");
+  const s = content("Part 3: Implementation", "PART 3  ·  IMPLEMENTATION", "Pilot Plan", "An eight-week pilot to calibrate, test and refine the process before full rollout.");
   const phases = [
     ["WEEKS 1–2", "Calibrate", "Everyone reviews the same sample module, compares notes and agrees what “good” looks like."],
     ["WEEKS 3–6", "Pilot", "Use the form and note format on current projects; log practices in the bank."],
@@ -896,7 +896,7 @@ section("Part 3: Rollout", 3, "How we will make it happen",
 // 25. TOOLKIT & ASKS
 // ======================================================================
 {
-  const s = content("Part 3: Rollout", "NEXT STEPS", "What you get, and what we ask");
+  const s = content("Part 3: Implementation", "PART 3  ·  IMPLEMENTATION", "Toolkit and Next Steps", "Resources available now, and three actions for this month.");
   label(s, "YOUR TOOLKIT", 0.6, 1.65, 4, NAVY);
   const kit = [
     ["clipcheck-w", "Review form", "6 domains, 29 practices, two note cells per practice"],
@@ -934,9 +934,9 @@ section("Part 3: Rollout", 3, "How we will make it happen",
 pres.addSection({ title: "Close" });
 {
   const s = pres.addSlide({ masterName: "TITLE", sectionTitle: "Close" });
-  s.addText("LET'S DISCUSS", { placeholder: "kicker" });
-  s.addText("Make good work visible, explainable and reusable", { placeholder: "title" });
-  s.addText("Questions, concerns and ideas are welcome.", { placeholder: "subtitle" });
+  s.addText("DISCUSSION", { placeholder: "kicker" });
+  s.addText("Questions and Discussion", { placeholder: "title" });
+  s.addText("Our goal: make good work visible, explainable and reusable.", { placeholder: "subtitle" });
   const qs = [
     ["bullseye-w", "Which domain would you like to champion first?"],
     ["clipboard-w", "What would make documenting quick for you?"],
@@ -944,9 +944,9 @@ pres.addSection({ title: "Close" });
   ];
   qs.forEach((q, i) => {
     const x = 0.9 + i * 3.95;
-    card(s, x, 4.6, 3.65, 1.7, NAVY_MID);
-    iconCircle(s, q[0], STEEL, x + 0.28, 4.85, 0.6);
-    T(s, q[1], { x: x + 0.28, y: 5.55, w: 3.15, h: 0.7, fontSize: 16, bold: true, color: WHITE });
+    card(s, x, 4.1, 3.65, 1.7, NAVY_MID);
+    iconCircle(s, q[0], STEEL, x + 0.28, 4.35, 0.6);
+    T(s, q[1], { x: x + 0.28, y: 5.05, w: 3.15, h: 0.7, fontSize: 16, bold: true, color: WHITE });
   });
   s.addNotes(
     "Close on the three words: visible, explainable, reusable.\n\n" +
@@ -959,7 +959,7 @@ pres.addSection({ title: "Close" });
 // ======================================================================
 pres.addSection({ title: "Appendix" });
 {
-  const s = content("Appendix", "APPENDIX", "Sources cited in this briefing");
+  const s = content("Appendix", "APPENDIX", "Sources", "References cited in this briefing (APA 7th edition).");
   // [plain, italic, plain] segments so journal and book titles are italic (APA 7th)
   const refs = [
     ["Alliger, G. M., Tannenbaum, S. I., Bennett, W., Jr., Traver, H., & Shotland, A. (1997). A meta-analysis of the relations among training criteria. ", "Personnel Psychology, 50", "(2), 341–358. https://doi.org/10.1111/j.1744-6570.1997.tb00911.x"],
